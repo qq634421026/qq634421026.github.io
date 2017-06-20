@@ -1,0 +1,785 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="插件化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Small 插件化">
+<meta name="keywords" content="插件化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Small插件化">
+<meta property="og:url" content="http://yoursite.com/2017/04/18/Small插件化/index.html">
+<meta property="og:site_name" content="Aroen">
+<meta property="og:description" content="Small 插件化">
+<meta property="og:image" content="http://yoursite.com/img/small1.png">
+<meta property="og:image" content="http://yoursite.com/img/small2.png">
+<meta property="og:image" content="http://yoursite.com/img/small3.png">
+<meta property="og:updated_time" content="2017-05-16T02:30:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Small插件化">
+<meta name="twitter:description" content="Small 插件化">
+<meta name="twitter:image" content="http://yoursite.com/img/small1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/18/Small插件化/"/>
+
+
+
+
+
+  <title>Small插件化 | Aroen</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aroen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/18/Small插件化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AroenZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aroen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Small插件化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T15:03:10+08:00">
+                2017-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Small-插件化"><a href="#Small-插件化" class="headerlink" title="Small 插件化"></a>Small 插件化</h1><p><img src="/img/small1.png" alt="small1"></p>
+<a id="more"></a>
+<h2 id="跳转指定的activity"><a href="#跳转指定的activity" class="headerlink" title="跳转指定的activity"></a>跳转指定的activity</h2><p><img src="/img/small2.png" alt="small2"></p>
+<h2 id="先buildlib后buildBundle"><a href="#先buildlib后buildBundle" class="headerlink" title="先buildlib后buildBundle"></a>先buildlib后buildBundle</h2><p><img src="/img/small3.png" alt="small3"></p>
+<h2 id="small也可以实现热修复的功能"><a href="#small也可以实现热修复的功能" class="headerlink" title="small也可以实现热修复的功能"></a>small也可以实现热修复的功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div></pre></td><td class="code"><pre><div class="line">public class UpgradeManager &#123;</div><div class="line"></div><div class="line"></div><div class="line">  private static class UpdateInfo &#123;</div><div class="line">    public String packageName;</div><div class="line">    public String downloadUrl;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private static class UpgradeInfo &#123;</div><div class="line">    public JSONObject manifest;</div><div class="line">    public List&lt;UpgradeManager.UpdateInfo&gt; updates;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private interface OnResponseListener &#123;</div><div class="line">    void onResponse(UpgradeManager.UpgradeInfo info);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private interface OnUpgradeListener &#123;</div><div class="line">    void onUpgrade(boolean succeed);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private static class ResponseHandler extends Handler &#123;</div><div class="line">    private UpgradeManager.OnResponseListener mListener;</div><div class="line"></div><div class="line">    public ResponseHandler(UpgradeManager.OnResponseListener listener) &#123;</div><div class="line">      mListener = listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void handleMessage(Message msg) &#123;</div><div class="line">      switch (msg.what) &#123;</div><div class="line">        case 1:</div><div class="line">          mListener.onResponse((UpgradeManager.UpgradeInfo) msg.obj);</div><div class="line">          break;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private UpgradeManager.ResponseHandler mResponseHandler;</div><div class="line"></div><div class="line">  private Context mContext;</div><div class="line">  private ProgressDialog mProgressDlg;</div><div class="line"></div><div class="line">  public UpgradeManager(Context context) &#123;</div><div class="line">    mContext = context;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line"> public void checkUpgrade() &#123;</div><div class="line">      //mProgressDlg = ProgressDialog.show(mContext, &quot;Small&quot;, &quot;Checking for updates...&quot;);</div><div class="line">      requestUpgradeInfo(Small.getBundleVersions(), new OnResponseListener() &#123;</div><div class="line">        @Override public void onResponse(UpgradeInfo info) &#123;</div><div class="line">          //mProgressDlg.setMessage(&quot;Upgrading...&quot;);</div><div class="line">          upgradeBundles(info, new OnUpgradeListener() &#123;</div><div class="line">            @Override public void onUpgrade(boolean succeed) &#123;</div><div class="line">              //mProgressDlg.dismiss();</div><div class="line">              //mProgressDlg = null;</div><div class="line">              String text = succeed</div><div class="line">                  ? &quot;Upgrade Success! Switch to background and back to foreground to see changes.&quot;</div><div class="line">                  : &quot;Upgrade Failed!&quot;;</div><div class="line">              Log.i(&quot;tag&quot;, &quot;===========&quot; + text);</div><div class="line">              Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();</div><div class="line">            &#125;</div><div class="line">          &#125;);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  /**</div><div class="line">   *</div><div class="line">   * @param versions</div><div class="line">   * @param listener</div><div class="line">   */</div><div class="line">  private void requestUpgradeInfo(Map versions, UpgradeManager.OnResponseListener listener) &#123;</div><div class="line">    System.out.println(versions); // this should be passed as HTTP parameters</div><div class="line">    mResponseHandler = new UpgradeManager.ResponseHandler(listener);</div><div class="line">    new Thread() &#123;</div><div class="line">      @Override public void run() &#123;</div><div class="line">        try &#123;</div><div class="line">          // 换成自己服务器地址</div><div class="line">          // Json format see http://wequick.github.io/small/upgrade/bundles.json</div><div class="line">          URL url = new URL(&quot;http://incoidea.incopat.com/appservice/resources/bundle.json&quot;);</div><div class="line">          HttpURLConnection conn = (HttpURLConnection) url.openConnection();</div><div class="line">          StringBuilder sb = new StringBuilder();</div><div class="line">          InputStream is = conn.getInputStream();</div><div class="line">          byte[] buffer = new byte[1024];</div><div class="line">          int length;</div><div class="line">          while ((length = is.read(buffer)) != -1) &#123;</div><div class="line">            sb.append(new String(buffer, 0, length));</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          // Parse json</div><div class="line">          JSONObject jo = new JSONObject(sb.toString());</div><div class="line">          JSONObject mf = jo.has(&quot;manifest&quot;) ? jo.getJSONObject(&quot;manifest&quot;) : null;</div><div class="line">          JSONArray updates = jo.getJSONArray(&quot;updates&quot;);</div><div class="line">          int N = updates.length();</div><div class="line">          List&lt;UpgradeManager.UpdateInfo&gt; infos = new ArrayList&lt;&gt;(N);</div><div class="line">          for (int i = 0; i &lt; N; i++) &#123;</div><div class="line">            JSONObject o = updates.getJSONObject(i);</div><div class="line">            UpgradeManager.UpdateInfo</div><div class="line">                info = new UpgradeManager.UpdateInfo();</div><div class="line">            info.packageName = o.getString(&quot;pkg&quot;);</div><div class="line">            info.downloadUrl = o.getString(&quot;url&quot;);</div><div class="line">            infos.add(info);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          // Post message</div><div class="line">          UpgradeManager.UpgradeInfo</div><div class="line">              ui = new UpgradeManager.UpgradeInfo();</div><div class="line">          ui.manifest = mf;</div><div class="line">          ui.updates = infos;</div><div class="line">          Message.obtain(mResponseHandler, 1, ui).sendToTarget();</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;.start();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private static class DownloadHandler extends Handler &#123;</div><div class="line">    private UpgradeManager.OnUpgradeListener mListener;</div><div class="line"></div><div class="line">    public DownloadHandler(UpgradeManager.OnUpgradeListener listener) &#123;</div><div class="line">      mListener = listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void handleMessage(Message msg) &#123;</div><div class="line">      switch (msg.what) &#123;</div><div class="line">        case 1:</div><div class="line">          mListener.onUpgrade((Boolean) msg.obj);</div><div class="line">          break;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private UpgradeManager.DownloadHandler mHandler;</div><div class="line"></div><div class="line">  private void upgradeBundles(final UpgradeManager.UpgradeInfo info, final UpgradeManager.OnUpgradeListener listener) &#123;</div><div class="line">    // Just for example, you can do this by OkHttp or something.</div><div class="line">    mHandler = new UpgradeManager.DownloadHandler(listener);</div><div class="line">    new Thread() &#123;</div><div class="line">      @Override public void run() &#123;</div><div class="line">        try &#123;</div><div class="line">          // Update manifest</div><div class="line">          if (info.manifest != null) &#123;</div><div class="line">            if (!Small.updateManifest(info.manifest, false)) &#123;</div><div class="line">              Message.obtain(mHandler, 1, false).sendToTarget();</div><div class="line">              return;</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">          // Download bundles</div><div class="line">          List&lt;UpgradeManager.UpdateInfo&gt; updates = info.updates;</div><div class="line">          for (UpgradeManager.UpdateInfo u : updates) &#123;</div><div class="line">            // Get the patch file for downloading</div><div class="line">            net.wequick.small.Bundle bundle = Small.getBundle(u.packageName);</div><div class="line">            File file = bundle.getPatchFile();</div><div class="line"></div><div class="line">            // Download</div><div class="line">            URL url = new URL(u.downloadUrl);</div><div class="line">            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();</div><div class="line">            InputStream is = urlConn.getInputStream();</div><div class="line">            OutputStream os = new FileOutputStream(file);</div><div class="line">            byte[] buffer = new byte[1024];</div><div class="line">            int length;</div><div class="line">            while ((length = is.read(buffer)) != -1) &#123;</div><div class="line">              os.write(buffer, 0, length);</div><div class="line">            &#125;</div><div class="line">            os.flush();</div><div class="line">            os.close();</div><div class="line">            is.close();</div><div class="line"></div><div class="line">            // Upgrade</div><div class="line">            bundle.upgrade();</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          Message.obtain(mHandler, 1, true).sendToTarget();</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">          Message.obtain(mHandler, 1, false).sendToTarget();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;.start();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这个类就实现了热修复的功能<br>把bundles.json放在你的服务器上<br>这里的url换成你自己的url </p>
+<p>然后调用<br><figure class="highlight plain"><figcaption><span>UpgradeManager(getContext()).checkUpgrade();```就可以你的服务器下载最新的.so文件了</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>  private void requestUpgradeInfo(Map versions, UpgradeManager.OnResponseListener listener) {<br>    System.out.println(versions); // this should be passed as HTTP parameters<br>    mResponseHandler = new UpgradeManager.ResponseHandler(listener);<br>    new Thread() {<br>      @Override public void run() {<br>        try {<br>          // Example HTTP request to get the upgrade bundles information.<br>          // Json format see <a href="http://wequick.github.io/small/upgrade/bundles.json" target="_blank" rel="external">http://wequick.github.io/small/upgrade/bundles.json</a><br>          URL url = new URL(“yourUrl”);<br>          HttpURLConnection conn = (HttpURLConnection) url.openConnection();<br>          StringBuilder sb = new StringBuilder();<br>          InputStream is = conn.getInputStream();<br>          byte[] buffer = new byte[1024];<br>          int length;<br>          while ((length = is.read(buffer)) != -1) {<br>            sb.append(new String(buffer, 0, length));<br>          }</p>
+<pre><code>      // Parse json
+      JSONObject jo = new JSONObject(sb.toString());
+      JSONObject mf = jo.has(&quot;manifest&quot;) ? jo.getJSONObject(&quot;manifest&quot;) : null;
+      JSONArray updates = jo.getJSONArray(&quot;updates&quot;);
+      int N = updates.length();
+      List&lt;UpgradeManager.UpdateInfo&gt; infos = new ArrayList&lt;&gt;(N);
+      for (int i = 0; i &lt; N; i++) {
+        JSONObject o = updates.getJSONObject(i);
+        UpgradeManager.UpdateInfo
+            info = new UpgradeManager.UpdateInfo();
+        info.packageName = o.getString(&quot;pkg&quot;);
+        info.downloadUrl = o.getString(&quot;url&quot;);
+        infos.add(info);
+      }
+
+      // Post message
+      UpgradeManager.UpgradeInfo
+          ui = new UpgradeManager.UpgradeInfo();
+      ui.manifest = mf;
+      ui.updates = infos;
+      Message.obtain(mResponseHandler, 1, ui).sendToTarget();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}.start();
+</code></pre><p>  }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">bundles.json的书写规则</div></pre></td></tr></table></figure>
+<p>{<br>  “manifest”: {<br>    “version”: “1.0.0”,<br>    “bundles”: [<br>    {<br>      “uri”: “lib.utils”,<br>      “pkg”: “net.wequick.example.small.lib.utils”<br>    },<br>    {<br>      “uri”: “lib.style”,<br>      “pkg”: “com.example.mysmall.lib.style”<br>    },<br>    {<br>      “uri”: “lib.analytics”,<br>      “pkg”: “net.wequick.example.lib.analytics”<br>    },<br>    {<br>      “uri”: “main”,<br>      “pkg”: “net.wequick.example.small.app.main”<br>    },<br>    {<br>      “uri”: “home”,<br>      “pkg”: “net.wequick.example.small.app.home”<br>    },<br>    {<br>      “uri”: “mine”,<br>      “pkg”: “net.wequick.example.small.app.mine”<br>    },<br>    {<br>      “uri”: “detail”,<br>      “pkg”: “net.wequick.example.small.app.detail”,<br>      “rules”: {<br>        “sub”: “Sub”<br>      }<br>    },<br>    {<br>      “uri”: “stub”,<br>      “type”: “app”,<br>      “pkg”: “net.wequick.example.small.appok_if_stub”<br>    },<br>    {<br>      “uri”: “about”,<br>      “pkg”: “net.wequick.example.small.app.about”<br>    }<br>  ]<br>  },<br>  “updates”: [<br>    {<br>      “pkg”: “net.wequick.example.small.app.about”,<br>      “url”: “<a href="http://wequick.github.io/small/upgrade/libnet_wequick_example_small_app_about.so" target="_blank" rel="external">http://wequick.github.io/small/upgrade/libnet_wequick_example_small_app_about.so</a>“<br>    },<br>    {<br>      “pkg”: “net.wequick.example.small.lib.utils”,<br>      “url”: “<a href="http://wequick.github.io/small/upgrade/libnet_wequick_example_small_lib_utils.so" target="_blank" rel="external">http://wequick.github.io/small/upgrade/libnet_wequick_example_small_lib_utils.so</a>“<br>    },<br>    {<br>      “pkg”: “com.example.mysmall.lib.style”,<br>      “url”: “<a href="http://wequick.github.io/small/upgrade/libcom_example_mysmall_lib_style.so" target="_blank" rel="external">http://wequick.github.io/small/upgrade/libcom_example_mysmall_lib_style.so</a>“<br>    },<br>    {<br>      “pkg”: “net.wequick.example.small.app.home”,<br>      “url”: “<a href="http://wequick.github.io/small/upgrade/libnet_wequick_example_small_app_home.so" target="_blank" rel="external">http://wequick.github.io/small/upgrade/libnet_wequick_example_small_app_home.so</a>“<br>    }<br>  ]<br>}</p>
+<p>```</p>
+<p>看到这我们发现bundles的第一个标签是 <strong><em>manifest</em></strong> ，从上面代码发现当我们从服务器获取到bundles.json文件时 就去解析文件内容，解析到<strong><em>manifest</em></strong>标签的时候 ，开始修改<strong><em>AndroidMainfes</em></strong>文件，从而达到更新<strong><em>AndroidMainfest</em></strong> 文件</p>
+<p>再来看bundles.json文件<br><strong><em>updates</em></strong>标签  这里面 <strong><em>pkg</em></strong> 对应的是我们插件的包名 <strong><em>url</em></strong>则对应的是我们服务器上对应的.So文件的地址，拿到.So文件的地址，就去下载并替换原有的.So文件，从而达到热修复的作用。</p>
+<p>其实Small还不能说是热修复，因为当So文件被替换修改的时候需要推出应用，再次进去入才能有效果。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/插件化/" rel="tag"># 插件化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/12/代码整洁之道》笔记1/" rel="next" title="《代码整洁》笔记1">
+                <i class="fa fa-chevron-left"></i> 《代码整洁》笔记1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/18/全局crash捕捉并上传的服务器/" rel="prev" title="全局crash捕捉并上传的服务器">
+                全局crash捕捉并上传的服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="AroenZhang" />
+          <p class="site-author-name" itemprop="name">AroenZhang</p>
+           
+              <p class="site-description motion-element" itemprop="description">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq634421026" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Others">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Others
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Small-插件化"><span class="nav-number">1.</span> <span class="nav-text">Small 插件化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转指定的activity"><span class="nav-number">1.1.</span> <span class="nav-text">跳转指定的activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先buildlib后buildBundle"><span class="nav-number">1.2.</span> <span class="nav-text">先buildlib后buildBundle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#small也可以实现热修复的功能"><span class="nav-number">1.3.</span> <span class="nav-text">small也可以实现热修复的功能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AroenZhang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

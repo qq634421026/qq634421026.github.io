@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="图片框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Picasso使用 和 Glide 的区别">
+<meta name="keywords" content="图片框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Picasso使用和Glide的区别">
+<meta property="og:url" content="http://yoursite.com/2017/04/18/Picasso使用和Glide的区别/index.html">
+<meta property="og:site_name" content="Aroen">
+<meta property="og:description" content="Picasso使用 和 Glide 的区别">
+<meta property="og:updated_time" content="2017-04-18T07:25:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Picasso使用和Glide的区别">
+<meta name="twitter:description" content="Picasso使用 和 Glide 的区别">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/18/Picasso使用和Glide的区别/"/>
+
+
+
+
+
+  <title>Picasso使用和Glide的区别 | Aroen</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aroen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/18/Picasso使用和Glide的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AroenZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aroen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Picasso使用和Glide的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T14:27:48+08:00">
+                2017-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Picasso使用-和-Glide-的区别"><a href="#Picasso使用-和-Glide-的区别" class="headerlink" title="Picasso使用 和 Glide 的区别"></a>Picasso使用 和 Glide 的区别</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/*** 初始化单例Picasso对象*/</div><div class="line">    private void initPicasso() &#123;</div><div class="line">        //配置Picasso</div><div class="line">        Picasso picasso = new Picasso.Builder(this)</div><div class="line">                //设置内存缓存大小，10M</div><div class="line">                .memoryCache(new LruCache(10 &lt;&lt; 20))</div><div class="line">                        //下载图片的格式，这样可以节省一半的内存</div><div class="line">                .defaultBitmapConfig(Bitmap.Config.RGB_565)</div><div class="line">                        //配置下载器，这里用的是OkHttp，必需单独加OkHttp，同时设置了磁盘缓存的位置和大小</div><div class="line">                //.downloader(new UrlConnectionDownloader())</div><div class="line">                //.downloader(new OkHttpDownloader(getCacheDir(), 20 &lt;&lt; 20))</div><div class="line">                .downloader(new MyOkHttpDownloader(this.getCacheDir() , 10&lt;&lt;20))</div><div class="line">                        //设置图片左上角的标记</div><div class="line">                        //红色：代表从网络下载的图片</div><div class="line">                        //蓝色：代表从磁盘缓存加载的图片</div><div class="line">                        //绿色：代表从内存中加载的图片</div><div class="line">                .indicatorsEnabled(true)</div><div class="line">                //.loggingEnabled(true)</div><div class="line">                .build();</div><div class="line">        Picasso.setSingletonInstance(picasso);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Picasso.with(context).load(www.xxxxx.com).into(imageview)</div><div class="line">                                                                       .placeholder(R.drwable.ic).error(R.drawable.sdsd）加载时和加载失败</div><div class="line">.noFade()无淡入淡出</div><div class="line">.resize(width,height)重新调整大小</div><div class="line">.resizeDimen(targetWidthResld,targetHeigthResld)//根据资源id拿到高度和宽度</div><div class="line">.centerCrop  配合resize 异常</div><div class="line">.fit                 不能resize</div><div class="line">.centerInside 配合resize异常</div><div class="line"> .rotate （90）旋转角度</div><div class="line">.config（Bitmap.Config.RGB_565）</div><div class="line"> .transform(new Transformation() &#123;</div><div class="line">                            @Override</div><div class="line">                            public Bitmap transform(Bitmap source) &#123;</div><div class="line">                                int size = Math.min(source.getWidth(), source.getHeight());</div><div class="line">                                Bitmap bm = Bitmap.createBitmap(source, 0, 0, size, size);//原始bitmap对象 原始图片x y 坐标起始点 x y 延伸尺寸 多余的被裁切                         </div><div class="line">                                   if（bm！＝source）｛</div><div class="line">                                   source.recycle()//被裁切 回收</div><div class="line">                              ｝                 </div><div class="line">                               return bm;</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            @Override</div><div class="line">                            public String key() &#123;</div><div class="line">                                return &quot;square”;//返回transform的名称</div><div class="line">                            &#125;</div><div class="line">                        &#125;).memoryPolicy(MemoryPolicy.NO_CACAHE,MemPolicy.NO_STORE)</div></pre></td></tr></table></figure>
+<p><strong><em>NO_CACAHE</em></strong> 是指图片加载跳过内存缓存查找 <strong><em>NO_STORE</em></strong>是指 图片存储时不往内存缓存中储存</p>
+<h2 id="设置tag"><a href="#设置tag" class="headerlink" title="设置tag"></a>设置tag</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">tag.(“main&quot;)</div><div class="line">Picasso.with(mContext).cancelTag(&quot;json”);//终止</div><div class="line">Picasso.with(this),pauseTag(“&quot;);</div><div class="line"></div><div class="line">查看大图的时候在seebigpicActivity de AndroidManifest.xml 加上</div><div class="line">android：process ＝ “picture”在新进程中打开</div><div class="line">加载资源文件</div><div class="line">Picasso.with(context).load(R.drable.ic_lunch).into(imageview)</div><div class="line">加载资产文件</div><div class="line">Picasso.with(context).load(“file:///android_asset/im.png&quot;).into(imageview)</div><div class="line">加载sd卡图片</div><div class="line">Picasso.with(context).load(new File(filePath)).into(imageview)</div></pre></td></tr></table></figure>
+<h2 id="picasso和glide的区别"><a href="#picasso和glide的区别" class="headerlink" title="picasso和glide的区别"></a>picasso和glide的区别</h2><h3 id="1-with（）参数不同"><a href="#1-with（）参数不同" class="headerlink" title="1 with（）参数不同"></a>1 with（）参数不同</h3><p>picasso 只能context </p>
+<p>glide可以activity he fragment</p>
+<h3 id="2-默认图片质量不一样"><a href="#2-默认图片质量不一样" class="headerlink" title="2 默认图片质量不一样"></a>2 默认图片质量不一样</h3><p>picasso ARGB_8888</p>
+<p>glide RGB_565</p>
+<h3 id="3-glide支持-GIF动态图片"><a href="#3-glide支持-GIF动态图片" class="headerlink" title="3 glide支持 GIF动态图片"></a>3 glide支持 GIF动态图片</h3><h3 id="4-缓存策略不同"><a href="#4-缓存策略不同" class="headerlink" title="4 缓存策略不同"></a>4 缓存策略不同</h3><p>picasso缓存的是全尺寸的图片</p>
+<h2 id="glide会为每种尺寸大小的imageview缓存一遍"><a href="#glide会为每种尺寸大小的imageview缓存一遍" class="headerlink" title="glide会为每种尺寸大小的imageview缓存一遍"></a>glide会为每种尺寸大小的imageview缓存一遍</h2><p> 加载库设置  导入 glide.okhttp.intregration网络请求集成包<br>初始化glide<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">glide.get(thsi).register(GlideUrl.class,InStream.class,new OKhttpLoader.Factor(OkhttpUtils.getokHttpSingletonInstance()));</div><div class="line">``` </div><div class="line">glide设置图片加载监听器</div></pre></td></tr></table></figure></p>
+<p>into（new GlideDrawableImageViewTarget(image view){重写 onloadFailed onLoadStarted onResourceReady}）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Glide清除内存缓存</div></pre></td></tr></table></figure></p>
+<p>Glide.get(Context).clearMemory();<br>new thread（new Runnable｛<br>     public void run（）｛<br>          Glide.get(Context).cleardisCache();<br>     ｝<br>｝）.start();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 自定义设置缓存空间</div><div class="line"></div><div class="line"></div><div class="line">在application里</div></pre></td></tr></table></figure></p>
+<p> MemoryCalculator ca = new MemoryCalculator(this);<br>ca.getMemoryCacheSize();<br>ca.getBitmapPoolSize();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">自定义GlideModuel </div><div class="line">重写</div></pre></td></tr></table></figure>
+<p>applyOption(Context context,GlideBuilder bulider);<br> builder.setDecodeFormat(DecodeFormat.PREFER_AGRB_8888);<br>int cacheSize = 10&lt;<20; builder.setdiscache(new="" internalcachediskcachefactor(context,cachesize))="" 内部缓存="" new="" externalcachediskcachefactor(context,cachesize))="" 外部缓存="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">和</div></pre></td></tr></table></20;></p>
+<p>registerComponents((Context context,Glide glide);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后在manifest中在application中加入</div></pre></td></tr></table></figure></p>
+<meta-data android:name="“GlideModule包名.GlideModule"" android:value="“GlideModule"" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## transform旋转图片</div><div class="line"></div><div class="line">transform(new 自定义的bitmapTransformation )</div><div class="line">重写 transform（）</div><div class="line">和</div></pre></td></tr></table>
+
+<p>getId()｛<br>return get class.getname()<br>｝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//图形转换的id给本图形转换起名字</div><div class="line">public class BitmapRotateTransformation extends BitmapTransformation &#123;</div><div class="line"></div><div class="line">    private float rotateRotationAngle = 0f;</div><div class="line"></div><div class="line">    public BitmapRotateTransformation(Context context, float rotateRotationAngle) &#123;</div><div class="line">        super(context);</div><div class="line"></div><div class="line">        this.rotateRotationAngle = rotateRotationAngle;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</div><div class="line">        Matrix matrix = new Matrix();</div><div class="line">        matrix.postRotate(rotateRotationAngle);</div><div class="line">        Bitmap result = Bitmap.createBitmap(toTransform, 0, 0, toTransform.getWidth(), toTransform.getHeight(), matrix, true);</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">            result.setConfig(Bitmap.Config.ARGB_8888);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        return getClass().getName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现圆角"><a href="#实现圆角" class="headerlink" title="实现圆角"></a>实现圆角</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">public class BitmapCircleTransformation extends BitmapTransformation &#123;</div><div class="line">    public BitmapCircleTransformation(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</div><div class="line">        return circleCrop(pool , toTransform);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    private Bitmap circleCrop(BitmapPool pool, Bitmap source) &#123;</div><div class="line">        if (source == null) return null;</div><div class="line"></div><div class="line">        int size = Math.min(source.getWidth(), source.getHeight());</div><div class="line">        int x = (source.getWidth() - size) / 2;</div><div class="line">        int y = (source.getHeight() - size) / 2;</div><div class="line"></div><div class="line">        //创建一个空白Bitmap，将在该Bitmap上铺设画布进行绘图</div><div class="line">        Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_4444);</div><div class="line">        if (result == null) &#123;</div><div class="line">            result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_4444);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Canvas canvas = new Canvas(result);</div><div class="line">        Paint paint = new Paint();</div><div class="line">        paint.setAntiAlias(true);</div><div class="line">        //选择原图中的中心矩形，绘制在画布上</div><div class="line">        Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);</div><div class="line">        paint.setShader(new BitmapShader(squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));</div><div class="line">        float r = size / 2f;</div><div class="line">        canvas.drawCircle(r, r, r, paint);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        return getClass().getName();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></meta-data>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图片框架/" rel="tag"># 图片框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/18/retrofit2使用笔记/" rel="next" title="retrofit2使用笔记">
+                <i class="fa fa-chevron-left"></i> retrofit2使用笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/18/tinker/" rel="prev" title="tinker">
+                tinker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="AroenZhang" />
+          <p class="site-author-name" itemprop="name">AroenZhang</p>
+           
+              <p class="site-description motion-element" itemprop="description">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq634421026" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Others">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Others
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Picasso使用-和-Glide-的区别"><span class="nav-number">1.</span> <span class="nav-text">Picasso使用 和 Glide 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加载网络图片"><span class="nav-number">1.1.</span> <span class="nav-text">加载网络图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置tag"><span class="nav-number">1.2.</span> <span class="nav-text">设置tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picasso和glide的区别"><span class="nav-number">1.3.</span> <span class="nav-text">picasso和glide的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-with（）参数不同"><span class="nav-number">1.3.1.</span> <span class="nav-text">1 with（）参数不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-默认图片质量不一样"><span class="nav-number">1.3.2.</span> <span class="nav-text">2 默认图片质量不一样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-glide支持-GIF动态图片"><span class="nav-number">1.3.3.</span> <span class="nav-text">3 glide支持 GIF动态图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-缓存策略不同"><span class="nav-number">1.3.4.</span> <span class="nav-text">4 缓存策略不同</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glide会为每种尺寸大小的imageview缓存一遍"><span class="nav-number">1.4.</span> <span class="nav-text">glide会为每种尺寸大小的imageview缓存一遍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现圆角"><span class="nav-number">1.5.</span> <span class="nav-text">实现圆角</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AroenZhang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

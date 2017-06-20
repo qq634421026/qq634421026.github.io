@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网络框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="retrofit2 使用笔记">
+<meta name="keywords" content="网络框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="retrofit2使用笔记">
+<meta property="og:url" content="http://yoursite.com/2017/04/18/retrofit2使用笔记/index.html">
+<meta property="og:site_name" content="Aroen">
+<meta property="og:description" content="retrofit2 使用笔记">
+<meta property="og:updated_time" content="2017-04-18T07:24:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="retrofit2使用笔记">
+<meta name="twitter:description" content="retrofit2 使用笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/18/retrofit2使用笔记/"/>
+
+
+
+
+
+  <title>retrofit2使用笔记 | Aroen</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aroen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/18/retrofit2使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AroenZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aroen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">retrofit2使用笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T14:44:48+08:00">
+                2017-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="retrofit2-使用笔记"><a href="#retrofit2-使用笔记" class="headerlink" title="retrofit2 使用笔记"></a>retrofit2 使用笔记</h1><a id="more"></a>
+<p>导包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.squareup.retrofit:converter-gson:2.0.0-beta2&apos;</div></pre></td></tr></table></figure></p>
+<p>GET请求</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">     注解规则</div><div class="line"> BaseURL 和@PATH 不是简单的拼接</div><div class="line">而是和&lt;a href=&quot;..&quot;&gt;的处理方式一样&lt;/a&gt;</div><div class="line"> BaseURL总是以“／”结尾</div><div class="line"></div><div class="line"> @URL 不要以“／”结尾</div><div class="line"> @POST(&quot;list&quot;) .baseUrl(&quot;http://api.nuuneui.com/base/level1&quot;) -----&gt;http://api.nuuneui.com/base/list</div><div class="line"> @POST(&quot;list&quot;) .baseUrl(&quot;http://api.nuuneui.com/base/level1/&quot;) -----&gt;http://api.nuuneui.com/base/level1/list</div><div class="line"> @POST(&quot;/list&quot;) 绝对跟路径 直接追加到url跟路径下</div><div class="line"> .baseUrl(&quot;http://api.nuuneui.com/base/level1/&quot;)-------&gt;http://api.nuuneui.com/list</div><div class="line"></div><div class="line">public static final String URL_BASE = &quot;http://m2.qiushibaike.com/“;／/baseurl</div></pre></td></tr></table></figure>
+<p>GET无参数的请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">  @GET(&quot;article/list/latest?page=1&quot;)</div><div class="line">Call&lt;ResponseBody&gt; getLatesJsonString();</div></pre></td></tr></table></figure>
+<p> GET有参数的请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@GET(&quot;article/list/&#123;type&#125;?&quot;)</div><div class="line">Call&lt;Model&gt; getInfoList(@Path(&quot;type&quot;) String type, @Query(&quot;page&quot;) int page);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(Constant.URL_BASE)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())//json解析                .build();        MyServerInterface myServerInterface = retrofit.create(</div><div class="line">MyServerInterface.class)</div><div class="line">        modelcall = myServerInterface.getInfoList(&quot;latest&quot;, 1);        modelcall.enqueue(new Callback&lt;Model&gt;() &#123;</div><div class="line">            @Override            public void onResponse(Response&lt;Model&gt; response, Retrofit retrofit) &#123;</div><div class="line">                if (response.isSuccess() &amp;&amp; response.body() != null) &#123;</div><div class="line">                    List&lt;Model.ItemsBean&gt; items = response.body().getItems();                    tv.setText(items.toString());                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override            public void onFailure(Throwable t) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);//两个参数的用法//        Call&lt;ResponseBody&gt; call = myServerInterface.getLatesJsonString();//        call.enqueue(new Callback&lt;ResponseBody&gt;() &#123;//            @Override//            public void onResponse(Response&lt;ResponseBody&gt; response, Retrofit retrofit) &#123;//主线程//                if (response.isSuccess()) &#123;//                    try &#123;//                        String result = response.body().string();//                        tv.setText(result);//                    &#125; catch (IOException e) &#123;//                        e.printStackTrace();//                    &#125;//                &#125;//            &#125;////            @Override//            public void onFailure(Throwable t) &#123;////            &#125;</div><div class="line">//        &#125;);//无参数的用法</div></pre></td></tr></table></figure>
+<p>GET请求 </p>
+<p>提交表单数据 方法中定义@QueryMap参数   @QueryMap在url后将在url后面追加类似”type=text&amp;count=30&amp;page=1“的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@GET（）</div><div class="line">    @GET(&quot;MyWeb/RegServlet&quot;)//服务器的路径</div><div class="line">    Call&lt;ResponseBody&gt; getRegInfo(@QueryMap Map&lt;String, String&gt; map);</div><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">        .baseUrl(Constant.URL_BASE)//服务器地址        .addConverterFactory(GsonConverterFactory.create())//json解析        .build();MyServerInterface myServerInterface = retrofit.create(MyServerInterface.class);Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();map.put(&quot;user&quot;,&quot;asd&quot;);map.put(&quot;id&quot;,&quot;1&quot;);map.put(&quot;pwd&quot;, &quot;111&quot;);final Call&lt;ResponseBody&gt; regInfo = myServerInterface.getRegInfo(map);regInfo.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">    @Override    public void onResponse(Response&lt;ResponseBody&gt; response, Retrofit retrofit) &#123;</div><div class="line">        if (response.isSuccess()&amp;&amp;response.body()!=null)&#123;</div><div class="line">            try &#123;</div><div class="line">                tv.setText(response.body().string());            &#125; catch (IOException e) &#123;</div><div class="line">                e.printStackTrace();            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override    public void onFailure(Throwable t) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Call&lt;ResponseBody&gt; getNetworkData(@Url String urlString);</div></pre></td></tr></table></figure>
+<p>   这种格式@GET后面不用写网址  在参数前面加上@Url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@GET(&quot;http://img.265g.com/userup/1201/201201071126534773.jpg&quot;)  baseurl无效</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Call&lt;ResponseBody&gt; getNetworkData();</div></pre></td></tr></table></figure>
+<p>这两个一样效果 </p>
+<p>第一个用传参数</p>
+<p>第二个不需要传参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">call_bm = serverInterface.getNetworkData(Constant.URL_DOWNLOAD_IMAGE);</div><div class="line">                call_bm.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void onResponse(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) &#123;</div><div class="line">                        //进入主线程</div><div class="line">                        Log.i(&quot;TAG&quot;, &quot;----&gt;onResponse::&quot; + Thread.currentThread().getName());</div><div class="line">                        //将下載后的文件保存进SD卡</div><div class="line">                        String fileName = Constant.URL_DOWNLOAD_IMAGE.substring(Constant.URL_DOWNLOAD_IMAGE.lastIndexOf(&quot;/&quot;) + 1);</div><div class="line">                        final boolean flag;</div><div class="line">                        try &#123;</div><div class="line">                            flag = SDCardHelper.saveFileToSDCardPrivateCacheDir(response.body().bytes(), fileName, mContext);</div><div class="line">                            Toast.makeText(mContext, &quot;结果：&quot; + flag, Toast.LENGTH_SHORT).show();</div><div class="line">                        &#125; catch (IOException e) &#123;</div><div class="line">                            e.printStackTrace();</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line">                        Toast.makeText(mContext, &quot;下載圖片失敗！：&quot; + t.toString(), Toast.LENGTH_SHORT).show();</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div></pre></td></tr></table></figure>
+<h3 id="下载大文件会导致异常-网络访问在主线程时间过长"><a href="#下载大文件会导致异常-网络访问在主线程时间过长" class="headerlink" title="下载大文件会导致异常  网络访问在主线程时间过长"></a>下载大文件会导致异常  网络访问在主线程时间过长</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Streaming</div><div class="line">@GET</div><div class="line">Call&lt;ResponseBody&gt; getNetWorkDataAsync(@Url String urlString)</div><div class="line"> </div><div class="line"></div><div class="line">new Thread(new Runnable() &#123;</div><div class="line">        @Override        public void run() &#123;</div><div class="line">            Call&lt;ResponseBody&gt; call_downBig = myServerInterface.getNetDataAsync(&quot;http://123.57.44.15:8085/webblue/uploads/1410202333730abc.mp4&quot;);            try &#123;</div><div class="line">                Response&lt;ResponseBody&gt; execute = call_downBig.execute();                InputStream is = execute.body().byteStream();                String fileName = &quot;http://123.57.44.15:8085/webblue/uploads/1410202333730abc.mp4&quot;.substring(&quot;http://123.57.44.15:8085/webblue/uploads/1410202333730abc.mp4&quot;.lastIndexOf(&quot;/&quot;) + 1);                boolean iasuccess = SDCardHelper.saveFileToSDCardPrivateCacheDir(is, fileName, MainActivity.this);                if (iasuccess) &#123;</div><div class="line">                    Intent intent = new Intent();</div><div class="line">                    intent.setAction(&quot;aroen.com.retrofittexr”);//发送广播 提醒下载后打开</div><div class="line">                    Bundle bundle = new Bundle();                    bundle.putString(&quot;path&quot;, SDCardHelper.getSDCardPrivateCacheDir(context) + File.separator + fileName);                    intent.putExtras(bundle);                    sendBroadcast(intent);                &#125;</div><div class="line">            &#125; catch (IOException e) &#123;</div><div class="line">                e.printStackTrace();            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;).start();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="广播代码"><a href="#广播代码" class="headerlink" title="广播代码"></a>广播代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Recrver extends BroadcastReceiver &#123;</div><div class="line">    private String Path = &quot;&quot;;</div><div class="line">    @Override    public void onReceive(final Context context, final Intent intent) &#123;</div><div class="line">        if (intent.getExtras() != null) &#123;</div><div class="line">            Path = intent.getExtras().getString(&quot;path&quot;);        &#125;</div><div class="line">        AlertDialog.Builder builder = new AlertDialog.Builder(context)</div><div class="line">                .setIcon(R.mipmap.ic_launcher)</div><div class="line">                .setTitle(&quot;提示&quot;).setMessage(&quot;是否播放&quot;).setPositiveButton(&quot;确认&quot;, new DialogInterface.OnClickListener() &#123;</div><div class="line">                    @Override                    public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                        Intent intent1 = new Intent();                        intent1.setAction(&quot;android.intent.action.VIEW&quot;);                        intent1.setDataAndType(Uri.fromFile(new File(Path)), &quot;video/*&quot;);                        context.startActivity(intent);                    &#125;</div><div class="line">                &#125;);    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="动态注册广播"><a href="#动态注册广播" class="headerlink" title="动态注册广播"></a>动态注册广播</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">recrver = new Recrver();</div><div class="line">registerReceiver(recrver, new IntentFilter(&quot;aroen.com.retrofittexr&quot;));</div><div class="line">在onDestroy中解除注册</div><div class="line">unregisterReceiver(recrver);//动态注册 要在onDestroy中取消</div></pre></td></tr></table></figure>
+<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p>方法中定义@Filed 参数，分别指定各个表单控件名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@FormUrlEncoded</div><div class="line">@POST(“MyWeb/RegServlet&quot;)</div><div class="line">Call&lt;ResponseBody&gt; postFormFileds(@Field(“username”) String username,@Field(“password) String password,@Field(“age”) String age);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@FormUrlEncoded</div><div class="line">@POST(“MyWeb/RegServlet&quot;)</div><div class="line">Call&lt;ResponseBody&gt; postFormFiledMap(@FieldMap Map&lt;String,String&gt; options);</div></pre></td></tr></table></figure>
+<p>上传文件 @Part 该参数 指定 file控件 的名称及上传后文件的名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Multipart</div><div class="line">@POST(“MyWeb/RegServlet&quot;)</div><div class="line">Call&lt;ResponseBody&gt; postUploadFile(@Part ( “uploadfile\”;filename=\ “image.png”)RequestBody requestBody);</div><div class="line"></div><div class="line">@Body参数 向服务器上传多个文件以及其他表单域数据</div><div class="line">@POST(“MyWeb/RegServlet&quot;)</div><div class="line">Call&lt;ResponseBody&gt; postUploadFilesMultipartBody(@Body MultipartBody multipartBidy);</div><div class="line"></div><div class="line">Content-Disposition:form-data;name=“控件域名称”；filename=“xxx.png”</div><div class="line">Cogent-Type:image/pjpeg</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">//POST请求数据        String username = &quot;zhy&quot;;        String pwd = &quot;123&quot;;        String age = &quot;10&quot;;</div><div class="line">       Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();</div><div class="line">       map.put(&quot;username&quot;, username);        map.put(&quot;pwd&quot;, pwd);        map.put(&quot;age&quot;, age);//        Call&lt;ResponseBody&gt; responseBodyCall = myServerInterface.postFormFiled(username, pwd, age);        Call&lt;ResponseBody&gt; responseBodyCallmap = myServerInterface.postFormFileMap(map);</div><div class="line">       responseBodyCallmap.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">           @Override            public void onResponse(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) &#123;</div><div class="line">               if (response.isSuccessful() &amp;&amp; response.body() != null) &#123;</div><div class="line">                   try &#123;</div><div class="line">                       tv.setText(response.body().string());                    &#125; catch (IOException e) &#123;</div><div class="line">                       e.printStackTrace();                    &#125;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           @Override            public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line"></div><div class="line">       &#125;);</div><div class="line">       //POST上传单个文件        File file = new File(&quot;path&quot;);        RequestBody requestBody = RequestBody.create(MediaType.parse(&quot;multipart/form-data&quot;), file);        Call&lt;ResponseBody&gt; responseBodyCall = myServerInterface.postUploadFile(requestBody);        responseBodyCall.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">           @Override            public void onResponse(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) &#123;</div><div class="line">               if (response.isSuccessful() &amp;&amp; response.body() != null) &#123;</div><div class="line"></div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           @Override            public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">           &#125;</div><div class="line">       &#125;);        //POST上传多个文件        File[] files = new File[]&#123;new File(&quot;path&quot;)&#125;;        String[] formFiledName = new String[]&#123;&quot;uploadfile&quot;&#125;;//服务器对应的名字 控件域名称        //获取MulitpaRTBody        MultipartBody multipartBody = buildMultipartBody(map, files, formFiledName);        Call&lt;ResponseBody&gt; responseBodyCall1 = myServerInterface.postUploadFilesMultipartBody(multipartBody);        responseBodyCall1.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">           @Override            public void onResponse(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) &#123;</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line">           @Override            public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">           &#125;</div><div class="line">       &#125;);    &#125;</div><div class="line"></div><div class="line">   private MultipartBody buildMultipartBody(Map&lt;String, String&gt; map, File[] files, String[] formFiledName) &#123;</div><div class="line">       MultipartBody.Builder builder = new MultipartBody.Builder();        //往MultipartBuilder对象中添加普通input控件的内容        if (map != null) &#123;</div><div class="line">           for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;</div><div class="line">               //添加普通input块的数据                builder.addPart(Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;&quot; + entry.getKey() + &quot;\&quot;&quot;),                        RequestBody.create(null, entry.getValue()));            &#125;</div><div class="line">       &#125;</div><div class="line">       //往MultipartBuilder对象中添加上传控件的内容        if (files != null &amp;&amp; formFiledName != null) &#123;</div><div class="line">           for (int i = 0; i &lt; files.length; i++) &#123;</div><div class="line">               File file = files[i];                String fileName = file.getName();                RequestBody requestBody = RequestBody.create(MediaType.parse(&quot;multipart/form-data&quot;), file);                //添加file input块的数据                builder.addPart(Headers.of(&quot;Content-Disposition&quot;,                        &quot;form-data; name=\&quot;&quot; + formFiledName[i] + &quot;\&quot;; filename=\&quot;&quot; + fileName + &quot;\&quot;&quot;), requestBody);            &#125;</div><div class="line">       &#125;</div><div class="line">       return builder.build();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>和piasso一起使用的优化。定于okhttp3的工具类。获取单例对象 然后在retrofit创建的时候client(client)。 piasso初始化的时候需要定义downloader。downloader里的okhttp对象通过okhttp3的工具类取得。然后添加一个无参数的构造方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">public class OkHttp3Utils &#123;</div><div class="line">    private static OkHttpClient okHttpClient = null;</div><div class="line"></div><div class="line">    public  static OkHttpClient getOkHttpSingletonInstance() &#123;</div><div class="line">        if (okHttpClient == null) &#123;</div><div class="line">            synchronized (OkHttpClient.class) &#123;</div><div class="line">                if (okHttpClient == null) &#123;</div><div class="line">                    okHttpClient = new OkHttpClient();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return okHttpClient;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public class MyDownLoader implements Downloader &#123;</div><div class="line">    private static OkHttpClient defaultOkHttpClient() &#123;</div><div class="line">        OkHttpClient client = OkHttp3Utils.getOkHttpSingletonInstance();</div><div class="line">        Log.d(&quot;MyOKHttpDownloader&quot;, &quot;----&gt;defaultOkHttpClient(): &quot; + client.toString());</div><div class="line">        return client;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private final OkHttpClient client;</div><div class="line"></div><div class="line">    public MyDownLoader() &#123;</div><div class="line">        this(defaultOkHttpClient());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Create a new downloader that uses the specified OkHttp instance. A response cache will not be</div><div class="line">     * automatically configured.</div><div class="line">     */</div><div class="line">    public MyDownLoader(OkHttpClient client) &#123;</div><div class="line">        this.client = client;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected final OkHttpClient getClient() &#123;</div><div class="line">        return client;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public Response load(Uri uri, int networkPolicy) throws IOException &#123;</div><div class="line">        CacheControl cacheControl = null;</div><div class="line">        if (networkPolicy != 0) &#123;</div><div class="line">            if (NetworkPolicy.isOfflineOnly(networkPolicy)) &#123;</div><div class="line">                cacheControl = CacheControl.FORCE_CACHE;</div><div class="line">            &#125; else &#123;</div><div class="line">                CacheControl.Builder builder = new CacheControl.Builder();</div><div class="line">                if (!NetworkPolicy.shouldReadFromDiskCache(networkPolicy)) &#123;</div><div class="line">                    builder.noCache();</div><div class="line">                &#125;</div><div class="line">                if (!NetworkPolicy.shouldWriteToDiskCache(networkPolicy)) &#123;</div><div class="line">                    builder.noStore();</div><div class="line">                &#125;</div><div class="line">                cacheControl = builder.build();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Request.Builder builder = new Request.Builder().url(uri.toString());</div><div class="line">        if (cacheControl != null) &#123;</div><div class="line">            builder.cacheControl(cacheControl);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        okhttp3.Response response = client.newCall(builder.build()).execute();</div><div class="line">        int responseCode = response.code();</div><div class="line">        if (responseCode &gt;= 300) &#123;</div><div class="line">            response.body().close();</div><div class="line">            throw new ResponseException(responseCode + &quot; &quot; + response.message(), networkPolicy,</div><div class="line">                    responseCode);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        boolean fromCache = response.cacheResponse() != null;</div><div class="line"></div><div class="line">        ResponseBody responseBody = response.body();</div><div class="line">        return new Response(responseBody.byteStream(), fromCache, responseBody.contentLength());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void shutdown() &#123;</div><div class="line">        okhttp3.Cache cache = client.cache();</div><div class="line">        if (cache != null) &#123;</div><div class="line">            try &#123;</div><div class="line">                cache.close();</div><div class="line">            &#125; catch (IOException ignored) &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>MainActivity中设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">OkHttpClient client = OkHttp3Utils.getOkHttpSingletonInstance();</div><div class="line">        Log.i(TAG, &quot;----&gt;initRetrofit: &quot; + client.toString());</div><div class="line"></div><div class="line">        Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(Constant.URL_BASE)</div><div class="line">                .client(client)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .build();</div><div class="line">        serverInterface = retrofit.create(MyServerInterface.class);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络框架/" rel="tag"># 网络框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/18/全局crash捕捉并上传的服务器/" rel="next" title="全局crash捕捉并上传的服务器">
+                <i class="fa fa-chevron-left"></i> 全局crash捕捉并上传的服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/18/Picasso使用和Glide的区别/" rel="prev" title="Picasso使用和Glide的区别">
+                Picasso使用和Glide的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="AroenZhang" />
+          <p class="site-author-name" itemprop="name">AroenZhang</p>
+           
+              <p class="site-description motion-element" itemprop="description">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq634421026" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Others">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Others
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#retrofit2-使用笔记"><span class="nav-number">1.</span> <span class="nav-text">retrofit2 使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">1.1.</span> <span class="nav-text">下载图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载大文件会导致异常-网络访问在主线程时间过长"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载大文件会导致异常  网络访问在主线程时间过长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播代码"><span class="nav-number">1.1.2.</span> <span class="nav-text">广播代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态注册广播"><span class="nav-number">1.1.3.</span> <span class="nav-text">动态注册广播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST请求"><span class="nav-number">1.2.</span> <span class="nav-text">POST请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AroenZhang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
