@@ -958,9 +958,6 @@ pre .javascript .function {
 .back-to-top.back-to-top-on {
   bottom: 30px;
 }
-.header {
-  background: transparent;
-}
 .header-inner {
   position: relative;
 }
@@ -1678,7 +1675,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f9ffee;
+  background: #1800ff;
 }
 .links-of-blogroll {
   font-size: 13px;
