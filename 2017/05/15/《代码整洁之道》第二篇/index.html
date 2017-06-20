@@ -93,18 +93,15 @@
 
 
 
-<meta name="description" content="《代码整洁》笔记第二篇">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《代码整洁之道》笔记第四篇">
+<meta property="og:title" content="《代码整洁之道》笔记第二篇">
 <meta property="og:url" content="http://yoursite.com/2017/05/15/《代码整洁之道》第二篇/index.html">
 <meta property="og:site_name" content="Aroen">
-<meta property="og:description" content="《代码整洁》笔记第二篇">
 <meta property="og:image" content="http://yoursite.com/img/CodeNode_2-1.jpg">
-<meta property="og:updated_time" content="2017-06-20T04:40:50.000Z">
+<meta property="og:updated_time" content="2017-06-20T05:06:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《代码整洁之道》笔记第四篇">
-<meta name="twitter:description" content="《代码整洁》笔记第二篇">
+<meta name="twitter:title" content="《代码整洁之道》笔记第二篇">
 <meta name="twitter:image" content="http://yoursite.com/img/CodeNode_2-1.jpg">
 
 
@@ -139,7 +136,7 @@
 
 
 
-  <title>《代码整洁之道》笔记第四篇 | Aroen</title>
+  <title>《代码整洁之道》笔记第二篇 | Aroen</title>
   
 
 
@@ -295,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《代码整洁之道》笔记第四篇</h1>
+          <h1 class="post-title" itemprop="name headline">《代码整洁之道》笔记第二篇</h1>
         
 
         <div class="post-meta">
@@ -364,14 +361,14 @@
       
 
       
-        <h1 id="《代码整洁》笔记第二篇"><a href="#《代码整洁》笔记第二篇" class="headerlink" title="《代码整洁》笔记第二篇"></a>《代码整洁》笔记第二篇</h1><p><img src="/img/CodeNode_2-1.jpg" alt="small1"></p>
+        <p><img src="/img/CodeNode_2-1.jpg" alt="small1"></p>
 <a id="more"></a>
 <p>上一篇文章中我们了解了整洁代码对程序的重要性，而且也了解了要写出整洁代码的最基本的一点，也就是<em>命名</em>。这是第二篇文章，主要讲述的是函数(方法)对于程序的作用，上一篇说到“代码命名就像一座大厦里的一块砖头”。那么我认为函数对于程序来说就行是一面墙，墙对于大厦也起着至关重要的作用，比承重墙之类的，那么我们要如何写好函数，写函数的时候要注意什么？，本篇文章就来一一解答这两个问题。</p>
 <p>我们在平时开发工作中基本上都会去看别人写的代码和自己以前写的代码，自己写的代码能记下来还好，但是记不下来的情况下，再来看代码会多多少少会有一点迷茫，更不要说看别人的代码了，每个人有每个人写代码的风格，有的人写的代码简单，明了，逻辑性强，可读性高。有的人写的代码可能看起来比较杂乱，不知道他想要干什么。一大本分原因是因为有的代码中函数里写的代码非常多，而且非常乱，这样的代码我们看起来会觉得吃力。那么什么样函数让别人看起来会觉得非常明白呢？</p>
-<h3 id="函数的要短小"><a href="#函数的要短小" class="headerlink" title="函数的要短小"></a>函数的要短小</h3><p>20世纪80年代，我们常说函数的长度不应该超过一屏，但是这话现在来看有点不太合适了，应为现在的屏幕大小，分辨率都非常的优秀。好的函数只有两三行，而且一目了然，而且每一个函数都会把你带到下一个函数里。</p>
+<h1 id="函数的要短小"><a href="#函数的要短小" class="headerlink" title="函数的要短小"></a>函数的要短小</h1><p>20世纪80年代，我们常说函数的长度不应该超过一屏，但是这话现在来看有点不太合适了，应为现在的屏幕大小，分辨率都非常的优秀。好的函数只有两三行，而且一目了然，而且每一个函数都会把你带到下一个函数里。</p>
 <p>if else while 语句等，其中的代码里应该只有一行，这行大抵应该是一个函数调用语句。这也意味着函数不应该大到足以容纳嵌套结构，但是平时开发的时候可能达不到那么高的要求。但是还是努力的达到要求。</p>
-<h3 id="只做一件事"><a href="#只做一件事" class="headerlink" title="只做一件事"></a>只做一件事</h3><p><em>函数应该做一件事，做好这件事，只做这一件事</em> 函数不应该很多事，执行的操作要和函数名一样，函数名字起的也要符合操作。</p>
-<h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><p>写出简短switch语句很难</p>
+<h1 id="只做一件事"><a href="#只做一件事" class="headerlink" title="只做一件事"></a>只做一件事</h1><p><em>函数应该做一件事，做好这件事，只做这一件事</em> 函数不应该很多事，执行的操作要和函数名一样，函数名字起的也要符合操作。</p>
+<h1 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h1><p>写出简短switch语句很难</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public Money calculatePay(Emploee e)throws InvalidEmployeeType&#123;       </div><div class="line">		switch(e.type)&#123;</div><div class="line">			case COMMISSIONED:</div><div class="line">				return calculateCommissionrdPay(e);</div><div class="line">			break;</div><div class="line">			case HOURLY:</div><div class="line">				return calculateHourlyPay(e);</div><div class="line">			break;</div><div class="line">			case SALARED:</div><div class="line">				return calculateSalareddPay(e);</div><div class="line">			break;</div><div class="line">			default:</div><div class="line">			throws new InvalidEmployeeType(e.type);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <p>上面switch语句其实已经很简洁，但是如果在增加几个类型会变得很长，而且违背了只做一件的事的原则，后期修改起来很麻烦，但是最麻烦的是可能到处有类似结构的函数，例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isPayday(Employee e);</div></pre></td></tr></table></figure>
@@ -380,12 +377,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public abstract class Employee&#123;</div><div class="line">	public abstract boolean isPayday();</div><div class="line">	public abstract Money calculatePay();</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface EmployeeFactory&#123;</div><div class="line">	public Employee makeEmployee(EmployeeRecord r);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class EmployeeFactoryImpl implements EmployeeFactory&#123;</div><div class="line">	public static Employee makeEmployee(EmployeeRecord r)&#123;</div><div class="line">		switch r.type&#123;</div><div class="line">			case COMMISSIONED:</div><div class="line">				return calculateCommissionrdPay(e);</div><div class="line">			break;</div><div class="line">			case HOURLY:</div><div class="line">				return calculateHourlyPay(e);</div><div class="line">			break;</div><div class="line">			case SALARED:</div><div class="line">				return calculateSalareddPay(e);</div><div class="line">			break;</div><div class="line">			default:</div><div class="line">			throws new InvalidEmployeeType(e.type);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样之后我们要生成雇员直接可以<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">但是不是所有的场景都适合这么些，也要就事论事，有的时候不会违反这些规则。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 使用描述性的名称</div><div class="line"></div><div class="line">函数的名字一定要明了，函数越短小，功能越集中，就越方便起名字。名字一定要符合函数里的操作。</div><div class="line"></div><div class="line"></div><div class="line">### 函数参数</div><div class="line"></div><div class="line">	尽量使用输入函数，输出函数要当成返回值，就像Android中Matrix，有的方法中传入RectF，然后一些运算的结果也直接赋值到这个参数中，这就是输出函数。</div><div class="line">	</div><div class="line"></div><div class="line">### 多参数</div><div class="line"></div><div class="line">两个参数参数的时候 函数名最好要明确第一个个第二个函数的区别</div><div class="line">```equals(a,b)```调用的时候如果忘了a，b的含义和顺序，还要回来看一下，这样会耽误时间和打断思路的，但是写成```equalsFileNameAndPath(String name,String path)```这样调用的时候是不是就会很清晰明了。如果可以把二元函数改为一元函数比如```writeFile(OutPutStream out , String path)```如果可以把OutPutStream写在当前累中的成员变量里，这样就可以```outputStream.writeField（name）;</div></pre></td></tr></table></figure></p>
+<p>这样之后我们要生成雇员直接可以<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">但是不是所有的场景都适合这么些，也要就事论事，有的时候不会违反这些规则。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 使用描述性的名称</div><div class="line"></div><div class="line">函数的名字一定要明了，函数越短小，功能越集中，就越方便起名字。名字一定要符合函数里的操作。</div><div class="line"></div><div class="line"></div><div class="line"># 函数参数</div><div class="line"></div><div class="line">	尽量使用输入函数，输出函数要当成返回值，就像Android中Matrix，有的方法中传入RectF，然后一些运算的结果也直接赋值到这个参数中，这就是输出函数。</div><div class="line">	</div><div class="line"></div><div class="line"># 多参数</div><div class="line"></div><div class="line">两个参数参数的时候 函数名最好要明确第一个个第二个函数的区别</div><div class="line">```equals(a,b)```调用的时候如果忘了a，b的含义和顺序，还要回来看一下，这样会耽误时间和打断思路的，但是写成```equalsFileNameAndPath(String name,String path)```这样调用的时候是不是就会很清晰明了。如果可以把二元函数改为一元函数比如```writeFile(OutPutStream out , String path)```如果可以把OutPutStream写在当前累中的成员变量里，这样就可以```outputStream.writeField（name）;</div></pre></td></tr></table></figure></p>
 <p>如果参数是一个类的多个属性，那么就把类当作参数。</p>
-<h3 id="无副作用"><a href="#无副作用" class="headerlink" title="无副作用"></a>无副作用</h3><p>我之前在请求网络数据的时候吧方法名起为 initData();但是在数据拉下来的时候顺便就把适配器也设置了，这设置适配器就是副作用，初始化数据，就是初始化数据，设置适配器就是设置适配器，这样以后要找设置适配器的代码会很那招到，但是也可以把方法名改为<code>initDataAndsetAdapter();</code>这样就不会有副作用了，只不过这样违反了只做一件事的原则</p>
-<h3 id="用异常来代替错误码"><a href="#用异常来代替错误码" class="headerlink" title="用异常来代替错误码"></a>用异常来代替错误码</h3><p>错误的时候的throws异常，然后在调用的时候在catch语句中区分错误类型。就不用在try中处理错误类型了 try里就是正常操作，catch就是处理错误，这样看起来就会很明了</p>
-<h3 id="千万别重复"><a href="#千万别重复" class="headerlink" title="千万别重复"></a>千万别重复</h3><p>这一点大家大家都应该知道了，代码重复会造成代码冗余，看起来臃肿。就不多说了。</p>
-<h3 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h3><p>要写出好的函数，应该像写作文一样，要读起来有一种“理应如此”的感觉。</p>
+<h2 id="无副作用"><a href="#无副作用" class="headerlink" title="无副作用"></a>无副作用</h2><p>我之前在请求网络数据的时候吧方法名起为 initData();但是在数据拉下来的时候顺便就把适配器也设置了，这设置适配器就是副作用，初始化数据，就是初始化数据，设置适配器就是设置适配器，这样以后要找设置适配器的代码会很那招到，但是也可以把方法名改为<code>initDataAndsetAdapter();</code>这样就不会有副作用了，只不过这样违反了只做一件事的原则</p>
+<h2 id="用异常来代替错误码"><a href="#用异常来代替错误码" class="headerlink" title="用异常来代替错误码"></a>用异常来代替错误码</h2><p>错误的时候的throws异常，然后在调用的时候在catch语句中区分错误类型。就不用在try中处理错误类型了 try里就是正常操作，catch就是处理错误，这样看起来就会很明了</p>
+<h2 id="千万别重复"><a href="#千万别重复" class="headerlink" title="千万别重复"></a>千万别重复</h2><p>这一点大家大家都应该知道了，代码重复会造成代码冗余，看起来臃肿。就不多说了。</p>
+<h1 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h1><p>要写出好的函数，应该像写作文一样，要读起来有一种“理应如此”的感觉。</p>
 
       
     </div>
@@ -598,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《代码整洁》笔记第二篇"><span class="nav-number">1.</span> <span class="nav-text">《代码整洁》笔记第二篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的要短小"><span class="nav-number">1.0.1.</span> <span class="nav-text">函数的要短小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只做一件事"><span class="nav-number">1.0.2.</span> <span class="nav-text">只做一件事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch语句"><span class="nav-number">1.0.3.</span> <span class="nav-text">switch语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无副作用"><span class="nav-number">1.0.4.</span> <span class="nav-text">无副作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用异常来代替错误码"><span class="nav-number">1.0.5.</span> <span class="nav-text">用异常来代替错误码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#千万别重复"><span class="nav-number">1.0.6.</span> <span class="nav-text">千万别重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后的话"><span class="nav-number">1.0.7.</span> <span class="nav-text">最后的话</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数的要短小"><span class="nav-number">1.</span> <span class="nav-text">函数的要短小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#只做一件事"><span class="nav-number">2.</span> <span class="nav-text">只做一件事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#switch语句"><span class="nav-number">3.</span> <span class="nav-text">switch语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无副作用"><span class="nav-number">3.1.</span> <span class="nav-text">无副作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用异常来代替错误码"><span class="nav-number">3.2.</span> <span class="nav-text">用异常来代替错误码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#千万别重复"><span class="nav-number">3.3.</span> <span class="nav-text">千万别重复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后的话"><span class="nav-number">4.</span> <span class="nav-text">最后的话</span></a></li></ol></div>
             
 
           </div>
