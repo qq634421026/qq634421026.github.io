@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/21/面试题整理/index.html">
 <meta property="og:site_name" content="Aroen">
 <meta property="og:description" content="本文是面试题整理，又从晚上筛选的，还有周围朋友遇到的，顺便让自己温习一下 inflate方法的参数1inflate(int resource, ViewGroup root, boolean attachToRoot);  如果root为null，attachToRoot将失去作用，设置任何值都没有意义。 如果root不为null，attachToRoot设为true，则会给加载的布局文件的指定一">
-<meta property="og:updated_time" content="2017-06-29T02:42:33.000Z">
+<meta property="og:updated_time" content="2017-06-29T08:30:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题整理">
 <meta name="twitter:description" content="本文是面试题整理，又从晚上筛选的，还有周围朋友遇到的，顺便让自己温习一下 inflate方法的参数1inflate(int resource, ViewGroup root, boolean attachToRoot);  如果root为null，attachToRoot将失去作用，设置任何值都没有意义。 如果root不为null，attachToRoot设为true，则会给加载的布局文件的指定一">
@@ -568,7 +568,7 @@
 <h2 id="listview加载图片会有什么问题，如果引起图片错位是什么原因导致的？怎么解决？"><a href="#listview加载图片会有什么问题，如果引起图片错位是什么原因导致的？怎么解决？" class="headerlink" title="listview加载图片会有什么问题，如果引起图片错位是什么原因导致的？怎么解决？"></a>listview加载图片会有什么问题，如果引起图片错位是什么原因导致的？怎么解决？</h2><p>加载图片可能很卡或者错位，<br>很卡的话在滑动的时候停止加载图片，</p>
 <p>错位的和可以使用第三方的加载框架解决，也可自己实现比如给ImageView增加一个tag就是图片的url，每次加载的时候判断一下tag和url是否一致</p>
 <h2 id="自己设计一个Picasso应该考虑哪些方面。"><a href="#自己设计一个Picasso应该考虑哪些方面。" class="headerlink" title="自己设计一个Picasso应该考虑哪些方面。"></a>自己设计一个Picasso应该考虑哪些方面。</h2><p>图片缓存（DiskLruCache，LruCache）、压缩、listview导致的错位、线程池的数量等</p>
-<h2 id="如何保证后台Service不被杀掉"><a href="#如何保证后台Service不被杀掉" class="headerlink" title="如何保证后台Service不被杀掉"></a>如何保证后台Service不被杀掉</h2><p>本题解析：先大体介绍一下android的Service以及他的生命周期，其二 介绍出现哪些手机出现service被杀掉的问题，<br>比如红米手机，service运行一段时间后很容易就被杀掉问题，然后你如何解决Service不被杀掉的方法。<br>回答：参考 <a href="http://blog.csdn.net/mad1989/article/details/22492519" target="_blank" rel="external">http://blog.csdn.net/mad1989/article/details/22492519</a></p>
+<h2 id="如何保证后台Service不被杀掉"><a href="#如何保证后台Service不被杀掉" class="headerlink" title="如何保证后台Service不被杀掉"></a>如何保证后台Service不被杀掉</h2><p>本题解析：先大体介绍一下android的Service以及他的生命周期，其二 介绍出现哪些手机出现service被杀掉的问题，<br>比如红米手机，service运行一段时间后很容易就被杀掉问题，然后你如何解决Service不被杀掉的方法。<br><a href="http://blog.csdn.net/iispring/article/details/47689819" target="_blank" rel="external">http://blog.csdn.net/iispring/article/details/47689819</a><br>回答：参考 <a href="http://blog.csdn.net/mad1989/article/details/22492519" target="_blank" rel="external">http://blog.csdn.net/mad1989/article/details/22492519</a></p>
 <h2 id="为什么主线程可以使用handler"><a href="#为什么主线程可以使用handler" class="headerlink" title="为什么主线程可以使用handler"></a>为什么主线程可以使用handler</h2><p> 应为handler运行需要messagequeue 和looper 的支撑  使用handler必须要有looper 而主线程 也就是我们说的UI线程 它就是activityThread，ActivityThread被创建的时候就会初始化Lopper，ActivityThread被创建的时候就会初始化Lopper</p>
 <h2 id="为什么不允许在在子线程访问UI"><a href="#为什么不允许在在子线程访问UI" class="headerlink" title="为什么不允许在在子线程访问UI"></a>为什么不允许在在子线程访问UI</h2><p> 因为UI控件是不线程安全的，如果在多线程中并发访问会导致UI控件处于不可预期状态 ？为什么系统不对UI控件的访问加锁呢？</p>
 <ol>
