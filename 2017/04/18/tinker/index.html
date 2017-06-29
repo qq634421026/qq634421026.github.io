@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/img/5.png">
 <meta property="og:image" content="http://yoursite.com/img/6.png">
 <meta property="og:image" content="http://yoursite.com/img/8.png">
-<meta property="og:updated_time" content="2017-06-29T03:25:42.000Z">
+<meta property="og:updated_time" content="2017-06-29T04:13:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tinker">
 <meta name="twitter:description" content="微信热修复框架Tinker集成记录Tinker 是微信官方的热补丁的解决方案，它支持动态下发代码 So库以及资源，让应用能够在不需要重新安装的情况下实现更新- Tinker">
@@ -519,8 +519,27 @@
 </ol>
 <p>若我们已经完成了应用的 Application 改造，即将 Application 的逻辑移动到 ApplicationLike类中。我们可以参考 tinkerpatch-sample 中的 SampleApplicationLike 类. 修改注释的方法和自己集成一样，并在mainfeast里注册application</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class SampleApplicationLike extends DefaultApplicationLike &#123;</div><div class="line">...</div><div class="line">     public void onBaseContextAttached(Context base) &#123;</div><div class="line">        TinkerPatch.init(this);</div><div class="line">     &#125;</div><div class="line">…</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>还需要配置轮训服务器的一些设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class FetchPatchHandler extends Handler &#123;</div><div class="line">    public static final long HOUR_INTERVAL = 3600 * 1000;</div><div class="line"></div><div class="line">    private long checkInterval;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 通过handler, 达到按照时间间隔轮训的效果</div><div class="line">     * @param hour</div><div class="line">     */</div><div class="line">    public void fetchPatchWithInterval(int hour) &#123;</div><div class="line">        //设置TinkerPatch的时间间隔</div><div class="line">        TinkerPatch.with().setFetchPatchIntervalByHours(hour);</div><div class="line">        checkInterval = hour * HOUR_INTERVAL;</div><div class="line">        //立刻尝试去访问,检查是否有更新</div><div class="line">        sendEmptyMessage(0);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void handleMessage(Message msg) &#123;</div><div class="line">        super.handleMessage(msg);</div><div class="line"></div><div class="line">        //这里使用false即可</div><div class="line">        TinkerPatch.with().fetchPatchUpdate(false);</div><div class="line">        //每隔一段时间都去访问后台, 增加10分钟的buffer时间</div><div class="line">        sendEmptyMessageDelayed(0, checkInterval + 10 * 60 * 1000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>发布时候appversion版本号每一个都要不一样发布的时候版本号和gridle里的appversion保持一致<br>我们app本来的appversion就是我们升级的时候需要修改的和这个不一样，可以自己设定一个规则，比如一个三位和我们app本身的versioncode保持一致，然后每一个版本可以重复发布升级补丁。</p>
 <p>API 详情见tinkerpatch的文档</p>
-<p>版本问题<br>经过反复测试<br>这个补丁是 一直对照基础包来打差异包<br>就是1升2的时候 （2-1）+1<br>2升3 （3-1）+1<br>3升4 （4-1）+1</p>
+<p>版本问题<br>经过反复测试<br>多次升级补丁之后，你安装的版本还是当初你用apk安装的版本无论你中间安装了多少个升级包，都是当初安装的那个版本</p>
+<p>这个补丁是 一直对照基础包来打差异包</p>
+<p>就是1升2的时候 （2-1）+1</p>
+<p>2升3 （3-1）+1</p>
+<p>3升4 （4-1）+1</p>
+<h2 id="多渠道"><a href="#多渠道" class="headerlink" title="多渠道"></a>多渠道</h2><p>关于渠道包的问题，若使用 flavor 编译渠道包，会导致不同的渠道包由于 BuildConfig 变化导致 classes.dex 差异。这里建议的方式有：</p>
+<p>将渠道信息写在 AndroidManifest.xml 或文件中，例如 channel.ini；</p>
+<p>将渠道信息写在 apk 文件的 zip comment 中，这种是建议方式，例如可以使用项目 packer-ng-plugin 或者可使用 V2 Scheme 的 walle；</p>
+<p>若不同渠道存在功能上的差异，建议将差异部分放于单独的dex或采用相同代码不同配置方式实现；</p>
+<p>已通过Walle实现：</p>
+<p>【Android】Walle多渠道打包&amp;Tinker热修复<br><a href="http://www.jianshu.com/p/0ba717f7385f" target="_blank" rel="external">http://www.jianshu.com/p/0ba717f7385f</a></p>
+<h2 id="Tinker已知问题"><a href="#Tinker已知问题" class="headerlink" title="Tinker已知问题"></a>Tinker已知问题</h2><p>Tinker 不支持修改 AndroidManifest.xml，Tinker 不支持新增四大组件；</p>
+<p>由于 Google Play 的开发者条款限制，不建议在GP渠道动态更新代码；</p>
+<p>在 Android N 上，补丁对应用启动时间有轻微的影响；</p>
+<p>不支持部分三星 android-21 机型，加载补丁时会主动抛出 TinkerRuntimeException:checkDexInstall failed；</p>
+<p>由于各个厂商的加固实现并不一致，在1.7.6以及之后的版本，tinker 不再支持加固的动态更新；</p>
+<p>对于资源替换，不支持修改 remoteView。例如 transition动画，notification icon 以及 桌面图标。</p>
 
       
     </div>
@@ -729,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信热修复框架Tinker集成记录"><span class="nav-number">1.</span> <span class="nav-text">微信热修复框架Tinker集成记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tinker和其他热修复的区别"><span class="nav-number">1.1.</span> <span class="nav-text">Tinker和其他热修复的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TinkerPatch"><span class="nav-number">1.2.</span> <span class="nav-text">TinkerPatch</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信热修复框架Tinker集成记录"><span class="nav-number">1.</span> <span class="nav-text">微信热修复框架Tinker集成记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tinker和其他热修复的区别"><span class="nav-number">1.1.</span> <span class="nav-text">Tinker和其他热修复的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TinkerPatch"><span class="nav-number">1.2.</span> <span class="nav-text">TinkerPatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多渠道"><span class="nav-number">1.3.</span> <span class="nav-text">多渠道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tinker已知问题"><span class="nav-number">1.4.</span> <span class="nav-text">Tinker已知问题</span></a></li></ol></li></ol></div>
             
 
           </div>
