@@ -1,0 +1,917 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="热修复," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="阿里云HotFix热修复使用笔记今天阿里云出了一本书《深入探索Android热修复技术原理》,下载下来了还没有看，准备找个时间好好看看，然后又听说阿里云又推出了一个热修复框架。下面我们来看看这个热修复框架和现在其他流行的热修复框架有什么区别。    平台 阿里云移动热修复 Qzone AndFix Robust Tinker     即时生效 yes no yes yes no   性能损耗 较小">
+<meta name="keywords" content="热修复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云HotFix热修复使用笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/03/阿里云HotFix热修复使用笔记/index.html">
+<meta property="og:site_name" content="Aroen">
+<meta property="og:description" content="阿里云HotFix热修复使用笔记今天阿里云出了一本书《深入探索Android热修复技术原理》,下载下来了还没有看，准备找个时间好好看看，然后又听说阿里云又推出了一个热修复框架。下面我们来看看这个热修复框架和现在其他流行的热修复框架有什么区别。    平台 阿里云移动热修复 Qzone AndFix Robust Tinker     即时生效 yes no yes yes no   性能损耗 较小">
+<meta property="og:image" content="http://yoursite.com/img/createapp.png">
+<meta property="og:updated_time" content="2017-07-03T14:42:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云HotFix热修复使用笔记">
+<meta name="twitter:description" content="阿里云HotFix热修复使用笔记今天阿里云出了一本书《深入探索Android热修复技术原理》,下载下来了还没有看，准备找个时间好好看看，然后又听说阿里云又推出了一个热修复框架。下面我们来看看这个热修复框架和现在其他流行的热修复框架有什么区别。    平台 阿里云移动热修复 Qzone AndFix Robust Tinker     即时生效 yes no yes yes no   性能损耗 较小">
+<meta name="twitter:image" content="http://yoursite.com/img/createapp.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/03/阿里云HotFix热修复使用笔记/"/>
+
+
+
+
+
+  <title>阿里云HotFix热修复使用笔记 | Aroen</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f85865f198325c93c8a2256411737225";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aroen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/阿里云HotFix热修复使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AroenZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aroen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">阿里云HotFix热修复使用笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T20:55:55+08:00">
+                2017-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="阿里云HotFix热修复使用笔记"><a href="#阿里云HotFix热修复使用笔记" class="headerlink" title="阿里云HotFix热修复使用笔记"></a>阿里云HotFix热修复使用笔记</h1><p>今天阿里云出了一本书《深入探索Android热修复技术原理》,下载下来了还没有看，准备找个时间好好看看，然后又听说阿里云又推出了一个热修复框架。下面我们来看看这个热修复框架和现在其他流行的热修复框架有什么区别。</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th style="text-align:center">阿里云移动热修复</th>
+<th style="text-align:right">Qzone</th>
+<th style="text-align:center">AndFix</th>
+<th style="text-align:center">Robust</th>
+<th style="text-align:center">Tinker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>即时生效</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:right">no</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td>性能损耗</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:right">较大</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:center">较大</td>
+</tr>
+<tr>
+<td>侵入式打包</td>
+<td style="text-align:center">无侵入式打包</td>
+<td style="text-align:right">依赖侵入式打包</td>
+<td style="text-align:center">无侵入式打包</td>
+<td style="text-align:center">依赖侵入式打包</td>
+<td style="text-align:center">依赖侵入式打包</td>
+</tr>
+<tr>
+<td>Rom体积</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:right">较小</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:center">较小</td>
+</tr>
+<tr>
+<td>接入复杂度</td>
+<td style="text-align:center">傻瓜式接入</td>
+<td style="text-align:right">比较简单</td>
+<td style="text-align:center">比较简单</td>
+<td style="text-align:center">复杂</td>
+<td style="text-align:center">复杂</td>
+</tr>
+<tr>
+<td>补丁包大小</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:right">较大</td>
+<td style="text-align:center">较小</td>
+<td style="text-align:center">一般</td>
+<td style="text-align:center">较小</td>
+</tr>
+<tr>
+<td>全平台支持</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:right">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>类替换</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:right">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>so替换</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:right">no</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>资源替换</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:right">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+<p>总体来说</p>
+<ol>
+<li>补丁即时生效，不需要应用重启；</li>
+<li>补丁包同样采用差量技术，生成的PATCH体积小；</li>
+<li>对应用无侵入，几乎无性能损耗；</li>
+<li>傻瓜式接入。</li>
+</ol>
+<p>下面我们开始看看怎么来实现热修复。</p>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p>首先要有阿里云的账号，经过实名验证才可以去创建应用</p>
+<ol>
+<li>登录移动热修复控制台：<a href="https://hotfix.console.aliyun.com/" target="_blank" rel="external">https://hotfix.console.aliyun.com/</a><br>，点击右上角创建App，跳转到2 MHub App管理控制台，或者直接访问MHub控制台：<a href="https://mhub.console.aliyun.com/" target="_blank" rel="external">https://mhub.console.aliyun.com/</a>。</li>
+</ol>
+<ol>
+<li>在MHub控制台点击右上角创建App，填入App名称、分类和描述。</li>
+</ol>
+<p>这里要注意这两个控制台一个是创建App时候用的一个是，发布版本的时候用的，刚开始没注意怎么也找不到发布版本的入口，还去提了一个工单，好尴尬…</p>
+<p> <img src="/img/createapp.png" alt="这是图片啊"></p>
+<h2 id="Android-Studio接入"><a href="#Android-Studio接入" class="headerlink" title="Android Studio接入"></a>Android Studio接入</h2><h3 id="gradle远程仓库依赖"><a href="#gradle远程仓库依赖" class="headerlink" title="gradle远程仓库依赖"></a>gradle远程仓库依赖</h3><p>打开项目找到app的build.gradle文件，添加如下配置：</p>
+<p>添加maven仓库地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">   maven &#123;</div><div class="line">       url &quot;http://maven.aliyun.com/nexus/content/repositories/releases&quot;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>添加gradle坐标版本依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.aliyun.ams:alicloud-android-hotfix:3.0.3&apos;</div></pre></td></tr></table></figure>
+<p>如果集成了其他阿里系的sdk导致utdid冲突，则如下处理，关闭依赖传递性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">compile (&apos;com.aliyun.ams:alicloud-android-hotfix:3.0.3&apos;) &#123;</div><div class="line">     exclude(module:&apos;alicloud-android-utdid&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="权限声明"><a href="#权限声明" class="headerlink" title="权限声明"></a>权限声明</h3><p>android6.0注意动态权限申请</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;! -- 网络权限 --&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</div><div class="line">&lt;! -- 外部存储读权限，调试工具加载本地补丁需要 --&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;</div></pre></td></tr></table></figure>
+<h3 id="配置AndroidManifest文件"><a href="#配置AndroidManifest文件" class="headerlink" title="配置AndroidManifest文件"></a>配置AndroidManifest文件</h3><p>在<strong>AndroidManifest.xml</strong>中间的<strong>application</strong>节点下添加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;meta-data</div><div class="line">android:name=&quot;com.taobao.android.hotfix.IDSECRET&quot;</div><div class="line">android:value=&quot;App ID&quot; /&gt;</div><div class="line">&lt;meta-data</div><div class="line">android:name=&quot;com.taobao.android.hotfix.APPSECRET&quot;</div><div class="line">android:value=&quot;App Secret&quot; /&gt;</div><div class="line">&lt;meta-data</div><div class="line">android:name=&quot;com.taobao.android.hotfix.RSASECRET&quot;</div><div class="line">android:value=&quot;RSA密钥&quot; /&gt;</div></pre></td></tr></table></figure>
+<h3 id="混淆配置"><a href="#混淆配置" class="headerlink" title="混淆配置"></a>混淆配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#基线包使用，生成mapping.txt</div><div class="line">-printmapping mapping.txt</div><div class="line">#生成的mapping.txt在app/buidl/outputs/mapping/release路径下，移动到/app路径下</div><div class="line">#修复后的项目使用，保证混淆结果一致</div><div class="line">#-applymapping mapping.txt</div><div class="line">#hotfix</div><div class="line">-keep class com.taobao.sophix.**&#123;*;&#125;</div><div class="line">-keep class com.ta.utdid2.device.**&#123;*;&#125;</div><div class="line">#防止inline</div><div class="line">-dontoptimize</div></pre></td></tr></table></figure>
+<h3 id="SDK接口使用说明"><a href="#SDK接口使用说明" class="headerlink" title="SDK接口使用说明"></a>SDK接口使用说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// initialize最好放在attachBaseContext最前面</div><div class="line">SophixManager.getInstance().setContext(this)</div><div class="line">                .setAppVersion(appVersion)</div><div class="line">                .setAesKey(null)</div><div class="line">                .setEnableDebug(true)</div><div class="line">                .setPatchLoadStatusStub(new PatchLoadStatusListener() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void onLoad(final int mode, final int code, final String info, final int handlePatchVersion) &#123;</div><div class="line">                        // 补丁加载回调通知</div><div class="line">                        if (code == PatchStatus.CODE_LOAD_SUCCESS) &#123;</div><div class="line">                            // 表明补丁加载成功</div><div class="line">                        &#125; else if (code == PatchStatus.CODE_LOAD_RELAUNCH) &#123;</div><div class="line">                            // 表明新补丁生效需要重启. 开发者可提示用户或者强制重启;</div><div class="line">                            // 建议: 用户可以监听进入后台事件, 然后应用自杀</div><div class="line">                        &#125; else if (code == PatchStatus.CODE_LOAD_FAIL) &#123;</div><div class="line">                            // 内部引擎异常, 推荐此时清空本地补丁, 防止失败补丁重复加载</div><div class="line">                            // SophixManager.getInstance().cleanPatches();</div><div class="line">                        &#125; else &#123;</div><div class="line">                            // 其它错误信息, 查看PatchStatus类说明</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;).initialize();</div><div class="line">// queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中</div><div class="line">SophixManager.getInstance().queryAndLoadNewPatch();</div></pre></td></tr></table></figure>
+<p>注意上面注释的地方有一个<strong>queryAndLoadNewPatch</strong>不能在<strong>attachBaseContext</strong>中，<br><strong>queryAndLoadNewPatch</strong>这个方法我们可以在初始化之后随时调用，这个方法放在哪就可以在哪里查询后台是否有最新的补丁并下载。</p>
+<h3 id="打差异包"><a href="#打差异包" class="headerlink" title="打差异包"></a>打差异包</h3><p>阿里云提供一个带有可视化界面的打包工具</p>
+<p>使用简单只需一个新包一个旧包，然后点一下go按钮就可以了</p>
+<p>然后在阿里云平台上发布版本，如果需要本地测试的话，阿里云也提供一个测试工具，使用起来也特别简单<br>，其他具体的sdk就看文档就可以了。</p>
+<h3 id="注意（敲黑板！！！）"><a href="#注意（敲黑板！！！）" class="headerlink" title="注意（敲黑板！！！）"></a>注意（敲黑板！！！）</h3><p>有一个问题，有的时候能热修复不用重启，有的时候冷修复需要重启，那究竟何时走即使生效热修复，何时走冷启动修复？</p>
+<p>这是根据代码变动情况决定的。</p>
+<p>代码若变动小，一般会走即时生效热修复，而如果代码变动大，比如在已存在的类中新增方法，修改了so等情况，都会走冷启动。这是由打包工具自行检测代码变化来判断的，开发者无需考虑。</p>
+<p>并且，在运行期如果在所运行的设备上检测到不支持即时生效热修复，也会在该机型上走强制冷启动修复。</p>
+<p>而如果对稳定性有极高要求，可开启强制冷启动选项（在打包工具中高级中可以选择强制冷启动），这样任何变动都会按强制冷启动方式打包。</p>
+<p>如果想补丁下载好了的时候自动修复，可以在另一个进程开启一个Service不要和app在同一个进程，这个serviec的任务就是启动一个app然后自己干掉自己，在application里面回掉的的方法里判断CODE然后选择重启app，但是最好不要这么干，毕竟强制重启体验也不太友好。</p>
+<p>下面是自杀服务和一个重启工具类 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class killSelfService extends Service &#123;</div><div class="line"></div><div class="line">    private static  long stopDelayed=2000;</div><div class="line">    private Handler handler;</div><div class="line">    private String PackageName;</div><div class="line">    public killSelfService() &#123;</div><div class="line">        handler=new Handler();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int onStartCommand(final Intent intent, int flags, int startId) &#123;</div><div class="line">        stopDelayed=intent.getLongExtra(&quot;Delayed&quot;,1000);</div><div class="line">        PackageName=intent.getStringExtra(&quot;PackageName&quot;);</div><div class="line">        handler.postDelayed(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">            //开启应用然后自杀</div><div class="line">                Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(PackageName);</div><div class="line">                startActivity(LaunchIntent);</div><div class="line">                killSelfService.this.stopSelf();</div><div class="line">            &#125;</div><div class="line">        &#125;,stopDelayed);</div><div class="line">        return super.onStartCommand(intent, flags, startId);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public IBinder onBind(Intent intent) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class RestartAPPTool &#123;</div><div class="line"></div><div class="line">    public static void restartAPP(Context context, long Delayed)&#123;</div><div class="line"></div><div class="line">			//开启服务传递包名和开启延迟</div><div class="line">        Intent intent1=new Intent(context,killSelfService.class);</div><div class="line">        intent1.putExtra(&quot;PackageName&quot;,context.getPackageName());</div><div class="line">        intent1.putExtra(&quot;Delayed&quot;,Delayed);</div><div class="line">        context.startService(intent1);</div><div class="line">        android.os.Process.killProcess(android.os.Process.myPid());</div><div class="line">    &#125;</div><div class="line">    public static void restartAPP(Context context)&#123;</div><div class="line">        restartAPP(context,2000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/热修复/" rel="tag"># 热修复</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/21/面试题整理/" rel="prev" title="面试题整理">
+                面试题整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="AroenZhang" />
+          <p class="site-author-name" itemprop="name">AroenZhang</p>
+           
+              <p class="site-description motion-element" itemprop="description">古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq634421026" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5377262139" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Others">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Others
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里云HotFix热修复使用笔记"><span class="nav-number">1.</span> <span class="nav-text">阿里云HotFix热修复使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">1.1.</span> <span class="nav-text">创建应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Studio接入"><span class="nav-number">1.2.</span> <span class="nav-text">Android Studio接入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle远程仓库依赖"><span class="nav-number">1.2.1.</span> <span class="nav-text">gradle远程仓库依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限声明"><span class="nav-number">1.2.2.</span> <span class="nav-text">权限声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置AndroidManifest文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">配置AndroidManifest文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混淆配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">混淆配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK接口使用说明"><span class="nav-number">1.2.5.</span> <span class="nav-text">SDK接口使用说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打差异包"><span class="nav-number">1.2.6.</span> <span class="nav-text">打差异包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意（敲黑板！！！）"><span class="nav-number">1.2.7.</span> <span class="nav-text">注意（敲黑板！！！）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AroenZhang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 背景动画 -->
+<!-- <script type="text/javascript" color="0,104,183" opacity="1.0" count="99" src="/js/src/particle.js"></script>-->
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->
