@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/05/360RePlugin插件化方案踩坑笔记/index.html">
 <meta property="og:site_name" content="Aroen">
 <meta property="og:description" content="最近360推出了一个插件化方案RePlugin,github地址具体特点和其他插件化方案有什么区别就在github上看吧，我就不再这里说明了 接入也非常简单，这里还是去看官方给出的文档就可以了 宿主接入指南 插件接入指南 文档都非常详细，在这我要说的是一些文档上面没有涉及到，后者比较容易出错的地方 首先插件分为外置插件和内置插件 外置插件外置插件是指可通过“下载”、“放入SD卡”等方式来安装并运行">
-<meta property="og:updated_time" content="2017-07-05T14:18:49.000Z">
+<meta property="og:updated_time" content="2017-07-10T01:46:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="360RePlugin插件化方案踩坑笔记">
 <meta name="twitter:description" content="最近360推出了一个插件化方案RePlugin,github地址具体特点和其他插件化方案有什么区别就在github上看吧，我就不再这里说明了 接入也非常简单，这里还是去看官方给出的文档就可以了 宿主接入指南 插件接入指南 文档都非常详细，在这我要说的是一些文档上面没有涉及到，后者比较容易出错的地方 首先插件分为外置插件和内置插件 外置插件外置插件是指可通过“下载”、“放入SD卡”等方式来安装并运行">
@@ -412,7 +412,10 @@
 <p>这里要说比较重要的2点</p>
 <p>1 . 无论外置插件，还是内置插件都要在清单文件上注册版本号和名字,名字可以用来跳转的时候使用，而且上文说到卸载插件的时候可以传递一个名字就是这个名字，插件每一次更新都要增加，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">           android:name=&quot;com.qihoo360.plugin.name&quot;</div><div class="line">           android:value=&quot;zhy&quot; /&gt;</div><div class="line">       &lt;meta-data</div><div class="line">           android:name=&quot;com.qihoo360.plugin.version.ver&quot;</div><div class="line">           android:value=&quot;100&quot; /&gt;</div></pre></td></tr></table></figure>
-<p>2 . 第二点比较重要，也是使用的时候一致困扰我的，就是在使用内置插件形式的时候，要在asstes文件夹下，新建一个plugins文件用来放我们的插件文件（xxx.jar）,这样没有问题，但是之前吧官方demo下载并run的时候发现这样只能在内置的时候使用，外置不可以，几经磨难啊，发现在外置插件的时候要吧plugins文件名改为replugin_plns,因为如果这个文件名和使用方法不一致的会说Plugins-builtin.json错误，<br>当编译主程序时，我们的“动态编译方案”会自动在Assets目录下生成一个名叫“Plugins-builtin.json”文件，所以文件名不对导致了json的错误</p>
+<p>2 . 第二点比较重要，也是使用的时候一致困扰我的，就是在使用内置插件形式的时候，要在asstes文件夹下，新建一个plugins文件用来放我们的插件文件（xxx.jar）,这样没有问题，但是之前把官方demo下载并run的时候发现这样只能在内置的时候使用，外置不可以，几经磨难啊，发现在外置插件的时候要把plugins文件名改为replugin_plns,因为如果这个文件名不对会导致Plugins-builtin.json错误，<br>当编译主程序时，我们的“动态编译方案”会自动在Assets目录下生成一个名叫“Plugins-builtin.json”文件，所以文件名不对导致了json的错误</p>
+<p>3 . 插件版本号的最佳实践</p>
+<p>其中，第一位是大版本，第二位是功能版本，第三位是修复版本。</p>
+<p>例如——101。其中第一位“1”为大版本，第二位“0”为功能版本，第三位“1”是修复版本<br>大版本：当插件发生“极其重要的变化”时，可调整此版本<br>功能版本：当插件增加了多个新功能，或优化了多个功能项时，可调整此版本<br>修复版本：当插件出现一些Bug需要修复，或一些很小的改动项，或做A/B Test时，可调整此版本</p>
 <p>Replugin插件花方案使用比较简单，只能功能比较多，只是刚发布没多久，还有一些bug和需要优化的地方，有兴趣的同学可以自己去试一试。</p>
 
       
