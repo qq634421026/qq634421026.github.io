@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="学习笔记," />
 
 
 
@@ -93,22 +93,19 @@
 
 
 
-<meta name="description" content="Java反射机制 - 幕布       Java反射机制对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性;获取Class对象每创建编译一个类，JVM就会创建一个对应的Class的实例，并且这个Class对象保存在同名的.class文件里。当我们new一个新对象或者引用静态成员变量时，java虚拟机中的类加载器系统会将对用Class对象加载到">
-<meta name="keywords">
+<meta name="description" content="JAVA 反射机制反射机制的思维导图">
+<meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Aroen">
+<meta property="og:title" content="Java反射机制">
 <meta property="og:url" content="http://yoursite.com/2018/05/10/Java反射机制/index.html">
 <meta property="og:site_name" content="Aroen">
-<meta property="og:description" content="Java反射机制 - 幕布       Java反射机制对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性;获取Class对象每创建编译一个类，JVM就会创建一个对应的Class的实例，并且这个Class对象保存在同名的.class文件里。当我们new一个新对象或者引用静态成员变量时，java虚拟机中的类加载器系统会将对用Class对象加载到">
-<meta property="og:image" content="https://img.mubu.com/document_image/5d2df0b3-ec15-49fd-b3d3-ad874b5a0972-537608.jpg">
-<meta property="og:image" content="https://img.mubu.com/document_image/053288a0-3db4-40b8-bbc5-8a520549a43b-537608.jpg">
-<meta property="og:image" content="https://img.mubu.com/document_image/cb189aad-da6a-4313-8a3c-2dc0fb5df6bd-537608.jpg">
-<meta property="og:image" content="https://img.mubu.com/document_image/3b01a3ee-6f89-4b4a-b394-d7e48524b078-537608.jpg">
-<meta property="og:updated_time" content="2018-05-10T08:21:28.000Z">
+<meta property="og:description" content="JAVA 反射机制反射机制的思维导图">
+<meta property="og:image" content="http://yoursite.com/img/Java反射机制.png">
+<meta property="og:updated_time" content="2018-05-10T08:30:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Aroen">
-<meta name="twitter:description" content="Java反射机制 - 幕布       Java反射机制对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性;获取Class对象每创建编译一个类，JVM就会创建一个对应的Class的实例，并且这个Class对象保存在同名的.class文件里。当我们new一个新对象或者引用静态成员变量时，java虚拟机中的类加载器系统会将对用Class对象加载到">
-<meta name="twitter:image" content="https://img.mubu.com/document_image/5d2df0b3-ec15-49fd-b3d3-ad874b5a0972-537608.jpg">
+<meta name="twitter:title" content="Java反射机制">
+<meta name="twitter:description" content="JAVA 反射机制反射机制的思维导图">
+<meta name="twitter:image" content="http://yoursite.com/img/Java反射机制.png">
 
 
 
@@ -142,7 +139,7 @@
 
 
 
-  <title> | Aroen</title>
+  <title>Java反射机制 | Aroen</title>
   
 
 
@@ -308,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Java反射机制</h1>
         
 
         <div class="post-meta">
@@ -320,7 +317,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T16:21:28+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T16:51:55+08:00">
                 2018-05-10
               </time>
             
@@ -330,6 +327,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -355,20 +374,9 @@
       
 
       
-        <!DOCTYPE html>
-<html>
-<head>
-<title>Java反射机制 - 幕布</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="renderer" content="webkit">
-<meta name="author" content="mubu.com">
-</head>
-<body style="margin: 50px 20px;color: #333;font-family: 'Helvetica Neue','Hiragino Sans GB','WenQuanYi Micro Hei','Microsoft Yahei',sans-serif;">
-<div class="export-wrapper"><div style="font-size: 24px; padding: 20px 15px 0;"><div style="padding-bottom: 10px">Java反射机制</div><div style="background: #e5e6e8; height: 1px; margin-bottom: 20px;"></div></div><ul style="list-style: disc outside;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">对于任意一个类，都能够知道这个类的所有属性和方法；</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">对于任意一个对象，都能够调用它的任意一个方法和属性;</span></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取Class对象</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">每创建编译一个类，JVM就会创建一个对应的Class的实例，并且这个Class对象保存在同名的.class文件里。当我们new一个新对象或者引用静态成员变量时，java虚拟机中的类加载器系统会将对用Class对象加载到JVM中，然后JVM在根据这个类型信息相关的Class对象创建我们需要实例对象或者提供静态变量类型的引用值</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class类实例保存了相关类的类型信息，包括属性，方法，构造方法什么的，通过这么Class实例，我们可以在运行时访问对象的属性和方法等。另外通过Class类还可以创建出一个新的对象，这就是反射的基础</span></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取Class方法</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Objcet.getClass() byte[] bytes = new byte[1024]; Class c = bytes.getClass();但是基本类型无法使用这种方法</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">XXX.Class Class c = boolean.class;  Class c = String.class 基本类型也可以</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class.forName() Class c = Class.forName("java.lang.String");</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class cDoubleArray = Class.forName("[D"); &nbsp; &nbsp;//相当于double[].class</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class cStringArray = Class.forName("[[Ljava.lang.String;"); &nbsp; //相当于String[][].class</span></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class.getSuperclass()获得给定类的父类 Class</span></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">通过Class获取修饰符和类型</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取类名 c.getCanonicalName()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取限定符 Modifier.toString(c.getModifiers())</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取泛型 &nbsp;TypeVariable[] tv = c.getTypeParameters(); tv.getName()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取所有实现接口 &nbsp;Type[] intfs = c.getGenericInterfaces(); intf.toString</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取父类 c.getSuperclass()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取所有注解 &nbsp;Annotation[] ann = c.getAnnotations();</span></li></ul></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Member</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">三个实现类</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Fieldd 对应类变量</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredField(String name) 获取指定的变量（只要是声明的变量都能获得，包括 private）</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getField(String name) 获取指定的变量（只能获得 public 的）</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredFields() 获取所有声明的变量（包括 private）</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getFields() 获取所有的 public 变量</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取变量名称 f.getName()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取变量类型 f.getType()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取变量修饰符 Modifier.toString(f.getModifiers())</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取变量注解 &nbsp; &nbsp;Annotation[] ann = f.getAnnotations(); an.toString()</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取变量的值</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Cat cat = new Cat("Tom", 2);</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class c = cat.getClass();</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">fieldName.setAccessible(true);//私有的要取消java语言访问权限</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Field fieldName = c.getDeclaredField("name");</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">//取值&nbsp; &nbsp;String name = (String) fieldName.get(cat);</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">//设值  &nbsp;fieldName.set(cat, "Timmy");</span></li></ul></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Method 对应类方法</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes) 根据方法名获得指定的方法， 参数 name 为方法名，参数 parameterTypes 为方法的参数类型，如 getDeclaredMethod(“eat”, String.class)</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getMethod(String name, Class&lt;?&gt;... parameterTypes) 根据方法名获取指定的 public 方法，其它同上</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredMethods() 获取所有声明的方法</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getMethods() 获取所有的 public 方法</span></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取方法返回类型</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getReturnType() &nbsp; 获取目标方法返回类型对应的 Class 对象</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getGenericReturnType() &nbsp;获取目标方法返回类型对应的 Type 对象</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">区别</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">例如 public T function2()，那么各自返回值为：</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getReturnType() : class java.lang.Object</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getGenericReturnType() : T</span></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">例如public Class&lt;String&gt; function3()，那么各自返回值为：</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getReturnType() : class java.lang.Class</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getGenericReturnType() : java.lang.Class&lt;java.lang.String&gt;</span></li></ul></li></ul></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取方法参数类型</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getParameterTypes() 获取目标方法各参数类型对应的 Class 对象</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getGenericParameterTypes() 获取目标方法各参数类型对应的 Type 对象</span></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取方法声明抛出的异常的类型</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getExceptionTypes() 获取目标方法抛出的异常类型对应的 Class 对象</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getGenericExceptionTypes() &nbsp;获取目标方法抛出的异常类型对应的 Type 对象</span></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取方法的修饰符</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">method.getModifiers();</span></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">method.isVarArgs()&nbsp;//判断方法参数是否是可变参数</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">通过反射调用方法</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">//无参数</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Method sleep = c.getDeclaredMethod("sleep");</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">sleep.setAccessible(true)&nbsp;</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">sleep.invoke(cat);</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">//有参数</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Method eat = c.getDeclaredMethod("eat", String.class);</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">eat.invoke(cat, "grass");</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">//不确定参数</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class[] argTypes = new Class[] { String[].class };</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Method varargsEat = c.getDeclaredMethod("eat", argTypes);</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">String[] foods = new String[]{"grass", "meat"};</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">varargsEat.invoke(cat, (Object)foods);</span></li></ul></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Constructor 对应构造函数</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredConstructor(Class&lt;?&gt;... parameterTypes) 获取指定构造函数，参数 parameterTypes 为构造方法的参数类型</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getConstructor(Class&lt;?&gt;... parameterTypes) 获取指定 public 构造函数，参数 parameterTypes 为构造方法的参数类型</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getDeclaredConstructors() 获取所有声明的构造方法</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">getConstructors() 获取所有的 public 构造方法</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">构造方法的名称、限定符、参数、声明的异常等获取方法都与 Method一样</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">创建对象 </span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">1.Class.newInstance()仅可用来调用无参的构造方法；Constructor.newInstance()可以调用任意参数的构造方法。</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">2.Class.newInstance()会将构造方法中抛出的异常不作处理原样抛出; Constructor.newInstance()会将构造方法中抛出的异常都包装成 InvocationTargetException 抛出。</span></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">3.Class.newInstance()需要拥有构造方法的访问权限; Constructor.newInstance()可以通过 setAccessible(true) 方法绕过访问权限访问 private 构造方法。</span></li></ul></li></ul></li></ul></li></ul></li><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">数组和枚举</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">数组</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li class="collapsed" style="line-height: 22px;"><span class="content mubu-node collapsed" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">数组本质是一个对象，例如int[] intArr数组的类型就是class[I 数组类型中"["的个数代表数组的维度，后面的字母代表数组元素类型</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" images="%5B%7B%22id%22%3A%2237416348fce313099-537608%22%2C%22uri%22%3A%22document_image%2F5d2df0b3-ec15-49fd-b3d3-ad874b5a0972-537608.jpg%22%2C%22ow%22%3A414%2C%22oh%22%3A142%7D%5D" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">对应</span><div style="padding: 3px 0"><img src="https://img.mubu.com/document_image/5d2df0b3-ec15-49fd-b3d3-ad874b5a0972-537608.jpg" style="max-width: 720px;" class="attach-img"></div></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" images="%5B%7B%22id%22%3A%22ec163490097e4179-537608%22%2C%22uri%22%3A%22document_image%2F053288a0-3db4-40b8-bbc5-8a520549a43b-537608.jpg%22%2C%22ow%22%3A187%2C%22oh%22%3A112%7D%5D" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">获取一个数组的类型</span><div style="padding: 3px 0"><img src="https://img.mubu.com/document_image/053288a0-3db4-40b8-bbc5-8a520549a43b-537608.jpg" style="max-width: 720px;" class="attach-img"></div></li><li style="line-height: 22px;"><span class="content mubu-node" images="%5B%7B%22id%22%3A%2221f163490e6791111-537608%22%2C%22uri%22%3A%22document_image%2Fcb189aad-da6a-4313-8a3c-2dc0fb5df6bd-537608.jpg%22%2C%22ow%22%3A309%2C%22oh%22%3A93%7D%5D" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">创建和初始化数组 提供Array类用来创建和初始化数组</span><div style="padding: 3px 0"><img src="https://img.mubu.com/document_image/cb189aad-da6a-4313-8a3c-2dc0fb5df6bd-537608.jpg" style="max-width: 720px;" class="attach-img"></div></li><li style="line-height: 22px;"><span class="content mubu-node" images="%5B%7B%22id%22%3A%2211c1634911a723053-537608%22%2C%22uri%22%3A%22document_image%2F3b01a3ee-6f89-4b4a-b394-d7e48524b078-537608.jpg%22%2C%22ow%22%3A623%2C%22oh%22%3A161%7D%5D" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">创建多维数组</span><div style="padding: 3px 0"><img src="https://img.mubu.com/document_image/3b01a3ee-6f89-4b4a-b394-d7e48524b078-537608.jpg" style="max-width: 720px;" class="attach-img"></div></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">枚举 普通类所能使用的反射方法，枚举都能使用；另外 java 反射额外提供了几个方法为枚举服务。</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">Class.isEnum() 判断还不是枚举类型</span></li></ul></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">缺点</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">性能开销</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">反射涉及类型动态解析，所以 JVM 无法对这些代码进行优化。因此，反射操作的效率要比那些非反射操作低得多。我们应该避免在经常被执行的代码或对性能要求很高的程序中使用反射。</span></li></ul></li><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">安全限制</span><ul class="children" style="list-style: disc outside; padding-bottom: 4px;"><li style="line-height: 22px;"><span class="content mubu-node" style="line-height: 22px; min-height: 22px; font-size: 14px; display: inline-block; vertical-align: top;">使用反射技术要求程序必须在一个没有安全限制的环境中运行。</span></li></ul></li></ul></li></ul></div>
+        <h1 id="JAVA-反射机制"><a href="#JAVA-反射机制" class="headerlink" title="JAVA 反射机制"></a>JAVA 反射机制</h1><p>反射机制的思维导图</p>
+<p><img src="/img/Java反射机制.png" alt="head_img"><br><a id="more"></a></p>
 
-</body>
-</html>
       
     </div>
 
@@ -394,6 +402,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+        </div>
       
 
       
@@ -459,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -551,6 +574,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JAVA-反射机制"><span class="nav-number">1.</span> <span class="nav-text">JAVA 反射机制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
